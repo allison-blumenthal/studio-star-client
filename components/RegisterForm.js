@@ -19,15 +19,15 @@ function RegisterForm({ user, updateUser }) {
     lastName: '',
     pronouns: '',
     birthdate: null,
-    guardianNames: '',
+    guardianNames: null,
     email: '',
     profileImageUrl: '',
   });
 
   // handles the date when chosen from the date picker
   const handleDateChange = (date) => {
+    // formats the date for the backend using moment.js
     const formattedDate = moment(date).format('YYYY-MM-DD');
-    console.warn(formattedDate);
 
     setFormData((prevState) => ({
       ...prevState,
@@ -108,6 +108,8 @@ function RegisterForm({ user, updateUser }) {
             <div>
               <Form.Label>Select your date of birth:</Form.Label>
               <DatePicker
+              // re-formats the date to the frontend format
+              // so it will display correctly in the date picker
                 selected={formData.birthdate ? moment(formData.birthdate).toDate() : null}
                 onChange={handleDateChange}
                 placeholderText="Birthdate"
