@@ -51,7 +51,6 @@ function RegisterForm({ user, updateUser }) {
         <Form.Label>Profile Image URL</Form.Label>
         <Form.Control type="url" placeholder="Profile Image URL" name="profileImageUrl" value={formData.profileImageUrl} onChange={handleChange} required />
 
-
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
