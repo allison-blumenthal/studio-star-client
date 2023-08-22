@@ -6,6 +6,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import moment from 'moment';
 import { registerUser } from '../utils/auth';
 
 function RegisterForm({ user, updateUser }) {
@@ -24,10 +26,12 @@ function RegisterForm({ user, updateUser }) {
 
   // handles the date when chosen from the date picker
   const handleDateChange = (date) => {
-    console.warn(date);
+    const formattedDate = moment(date).format('YYYY-MM-DD');
+    console.warn(formattedDate);
+
     setFormData((prevState) => ({
       ...prevState,
-      birthdate: date,
+      birthdate: formattedDate,
     }));
   };
 
@@ -104,9 +108,8 @@ function RegisterForm({ user, updateUser }) {
             <div>
               <Form.Label>Select your date of birth:</Form.Label>
               <DatePicker
-                selected={formData.birthdate}
+                selected={formData.birthdate ? moment(formData.birthdate).toDate() : null}
                 onChange={handleDateChange}
-                dateFormat="yyyy-MM-dd"
                 placeholderText="Birthdate"
                 name="birthdate"
               />
