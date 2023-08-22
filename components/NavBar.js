@@ -19,7 +19,7 @@ export default function NavBar() {
   const { user } = useAuth();
 
   return (
-    <Navbar fixed="top" className="navbar-style">
+    <Navbar collapseOnSelect expand="lg" className="navbar-style">
       <Container>
 
         <Link passHref href="/">
