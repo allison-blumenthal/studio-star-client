@@ -8,9 +8,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment';
+import { useRouter } from 'next/router';
 import { registerUser } from '../utils/auth';
 
 function RegisterForm({ user, updateUser }) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     uid: user.uid,
     isTeacher: false,
@@ -55,9 +57,12 @@ function RegisterForm({ user, updateUser }) {
   };
 
   const handleSubmit = (e) => {
-    console.warn(formData);
     e.preventDefault();
-    registerUser(formData).then(() => updateUser(user.uid));
+    if (formData.isTeacher === true) {
+      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios/new'));
+    } else {
+      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios'));
+    }
   };
 
   return (
