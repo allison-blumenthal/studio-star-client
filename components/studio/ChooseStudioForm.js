@@ -14,7 +14,7 @@ export default function TeacherForm() {
 
   return (
     <Form>
-      <h1>Choose Teachers</h1>
+      <h1>Choose Studios</h1>
       <div className="teacher-cards-container">
         {teachers.map((teacher) => (
           <TeacherCard teacherObj={teacher} onSelect />
