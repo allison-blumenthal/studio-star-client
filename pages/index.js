@@ -15,13 +15,13 @@ function Home() {
     >
       {user.is_teacher === true ? (
         <>
-          <h1> Hello, {user.first_name}! </h1>
-          <h2>You are a teacher.</h2>
+          <h1>Welcome to Studio Star, {user.first_name}! </h1>
+          <h2>Thank you for using our platform for all your music teaching studio needs.</h2>
         </>
       ) : (
         <>
-          <h1>Greetings, {user.first_name}! </h1>
-          <h2>You are a student.</h2>
+          <h1>Welcome to Studio Star, {user.first_name}! </h1>
+          <h2>Thank you for using our platform to access all your music lesson materials.</h2>
         </>
       )}
     </div>
