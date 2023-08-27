@@ -22,14 +22,6 @@ function StudioCard({ studioObj, onUpdate }) {
     }
   };
 
-  // const enroll = () => {
-  //   enrollStudio(studioObj.id, user.uid).then(() => onUpdate());
-  // };
-
-  // const unenroll = () => {
-  //   unenrollStudio(studioObj.id, user.uid).then(() => onUpdate());
-  // };
-
   return (
     <>
       <Card className="text-center">
@@ -51,20 +43,6 @@ function StudioCard({ studioObj, onUpdate }) {
             {enrolled ? 'Ennrolled' : 'Not Enrolled'}
           </label>
         </div>
-
-        {/* {studioObj.enrolled ? (
-          <Button
-            onClick={unenroll}
-          >Unenroll
-          </Button>
-        )
-          : (
-            <Button
-              onClick={enroll}
-            >Enroll
-            </Button>
-          )} */}
-
       </Card>
     </>
   );
