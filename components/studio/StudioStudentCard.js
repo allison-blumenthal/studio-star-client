@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { unenrollStudio } from '../../utils/data/studioData';
+import assignment from '../../src/assets/images/assignment-icon.png';
+import trash from '../../src/assets/images/delete-icon.png';
 
 function StudioStudentCard({ studioStudentObj, onUpdate }) {
   const router = useRouter();
@@ -14,20 +17,27 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
     }
   };
 
+  const handleClick = () => {
+    router.push(`/students/${studioStudentObj.student_id.id}`);
+  };
+
   return (
     <>
       <Card className="text-center">
         <Card.Header>{studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}</Card.Header>
         <Card.Body>
+          <div className="btn-container">
+            <Button onClick={handleClick}>
+              <Image src={assignment} alt="assignment icon" />
+            </Button>
+            <Button onClick={unenroll} className="delete-btn">
+              <Image src={trash} alt="remove student icon" />
+            </Button>
+          </div>
           <Card.Text>{studioStudentObj.student_id.pronouns}</Card.Text>
           <Card.Img className="img" src={studioStudentObj.student_id.profile_image_url} alt="student" />
         </Card.Body>
         <Card.Footer className="text-muted">{studioStudentObj.student_id.instrument}</Card.Footer>
-        <Button
-          onClick={unenroll}
-        >Unenroll
-        </Button>
-
       </Card>
     </>
   );
@@ -37,6 +47,7 @@ StudioStudentCard.propTypes = {
   studioStudentObj: PropTypes.shape({
     id: PropTypes.number,
     student_id: PropTypes.shape({
+      id: PropTypes.number,
       uid: PropTypes.string,
       first_name: PropTypes.string,
       last_name: PropTypes.string,
