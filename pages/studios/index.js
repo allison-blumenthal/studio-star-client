@@ -24,6 +24,7 @@ function StudiosPage() {
       {studios.map((studio) => (
         <section key={`studio--${studio.id}`} className="studio">
           <StudioCard studioObj={studio} onUpdate={getAllStudios} enrolled={studio.enrolled} />
+          <br />
         </section>
       ))}
     </article>
