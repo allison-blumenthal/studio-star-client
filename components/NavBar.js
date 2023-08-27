@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Navbar, //
@@ -14,9 +14,22 @@ import { useAuth } from '../utils/context/authContext';
 import teacher from '../src/assets/images/teacher-icon.png';
 import assignment from '../src/assets/images/assignment-icon.png';
 import profile from '../src/assets/images/profile-icon.png';
+import { getStudioByTeacher } from '../utils/data/studioData';
 
 export default function NavBar() {
+  const [teacherStudio, setTeacherStudio] = useState({});
   const { user } = useAuth();
+
+  const getTeacherStudio = () => {
+    getStudioByTeacher(user.uid, user.id).then((studio) => setTeacherStudio(studio[0]));
+  };
+
+  console.warn('teacherstudio:', teacherStudio);
+
+  useEffect(() => {
+    getTeacherStudio();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar-style">
@@ -35,7 +48,7 @@ export default function NavBar() {
           <Nav className="me-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             {user.is_teacher ? (
-              <Link passHref href="/students">
+              <Link passHref href={`/studios/${teacherStudio.id}`}>
                 <Nav.Link>
                   <div className="nav-icon">
                     <Image src={teacher} alt="teacher icon" />

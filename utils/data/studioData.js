@@ -71,6 +71,19 @@ const getStudentsByStudio = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getStudioByTeacher = (uid, teacherId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/studios?teacher_id=${teacherId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data)) // resolve a single object
+    .catch(reject);
+});
+
 export {
-  getStudios, getSingleStudio, createStudio, enrollStudio, unenrollStudio, getStudentsByStudio,
+  getStudios, getSingleStudio, createStudio, enrollStudio, unenrollStudio, getStudentsByStudio, getStudioByTeacher,
 };

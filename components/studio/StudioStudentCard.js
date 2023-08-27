@@ -8,7 +8,9 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
   const { user } = useAuth();
 
   const unenroll = () => {
-    unenrollStudio(studioStudentObj.id, user.uid).then(() => onUpdate());
+    if (window.confirm(`Unenroll ${studioStudentObj.student_id.first_name}?`)) {
+      unenrollStudio(studioStudentObj.id, user.uid).then(() => onUpdate());
+    }
   };
 
   return (
