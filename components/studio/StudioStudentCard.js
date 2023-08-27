@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { unenrollStudio } from '../../utils/data/studioData';
-import { useAuth } from '../../utils/context/authContext';
 
 function StudioStudentCard({ studioStudentObj, onUpdate }) {
-  const { user } = useAuth();
+  const router = useRouter();
+  const { id } = router.query;
 
   const unenroll = () => {
     if (window.confirm(`Unenroll ${studioStudentObj.student_id.first_name}?`)) {
-      unenrollStudio(studioStudentObj.id, user.uid).then(() => onUpdate());
+      unenrollStudio(id, studioStudentObj.student_id.uid).then(() => onUpdate());
     }
   };
 
@@ -19,7 +20,7 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
         <Card.Header>{studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}</Card.Header>
         <Card.Body>
           <Card.Text>{studioStudentObj.student_id.pronouns}</Card.Text>
-          <Card.Img>{studioStudentObj.student_id.profile_image_url}</Card.Img>
+          <Card.Img className="img" src={studioStudentObj.student_id.profile_image_url} alt="student" />
         </Card.Body>
         <Card.Footer className="text-muted">{studioStudentObj.student_id.instrument}</Card.Footer>
         <Button
@@ -36,6 +37,7 @@ StudioStudentCard.propTypes = {
   studioStudentObj: PropTypes.shape({
     id: PropTypes.number,
     student_id: PropTypes.shape({
+      uid: PropTypes.string,
       first_name: PropTypes.string,
       last_name: PropTypes.string,
       pronouns: PropTypes.string,

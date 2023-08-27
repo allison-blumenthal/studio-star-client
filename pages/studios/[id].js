@@ -15,8 +15,6 @@ function StudioRoster() {
     getStudentsByStudio(id).then((data) => setStudioStudents(data));
   };
 
-  console.warn(studioStudents);
-
   useEffect(() => {
     getAllStudioStudents();
   // eslint-disable-next-line react-hooks/exhaustive-deps
