@@ -14,6 +14,7 @@ export default function StudentAssignments() {
 
   useEffect(() => {
     getCurrentStudent();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (
