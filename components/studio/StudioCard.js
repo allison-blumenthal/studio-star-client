@@ -29,7 +29,7 @@ function StudioCard({ studioObj, onUpdate }) {
         <Card.Body>
           <Card.Title>Teacher: {studioObj.teacher_id.first_name} {studioObj.teacher_id.last_name} </Card.Title>
           <Card.Text>{studioObj.teacher_id.pronouns}</Card.Text>
-          <Card.Img className="img" src={studioObj.teacher_id.profile_image_url} alt="teacher" />
+          <Card.Img className="teacher-img" src={studioObj.teacher_id.profile_image_url} alt="teacher" />
         </Card.Body>
         <Card.Footer className="text-muted">Instrument: {studioObj.teacher_id.instrument}</Card.Footer>
         <div>
