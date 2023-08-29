@@ -34,7 +34,6 @@ export default function StudentAssignments() {
           <br />
         </section>
       ))}
-
     </div>
   );
 }

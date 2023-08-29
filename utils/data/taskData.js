@@ -1,7 +1,7 @@
 import { clientCredentials } from '../client';
 
-const getAssignments = () => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments`, {
+const getTasks = () => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -12,8 +12,8 @@ const getAssignments = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSingleAssignment = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments/${id}`, {
+const getSingleTask = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -24,33 +24,33 @@ const getSingleAssignment = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createAssignment = (assignment) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments`, {
+const createTask = (task) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(assignment),
+    body: JSON.stringify(task),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-const updateAssignment = (assignment) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments/${assignment.id}`, {
+const updateTask = (task) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks/${task.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(assignment),
+    body: JSON.stringify(task),
   })
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-const deleteAssignment = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments/${id}`, {
+const deleteTask = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -60,8 +60,8 @@ const deleteAssignment = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getAssignmentsByStudentId = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/assignments?student_id=${id}`, {
+const getTasksByAssignmentId = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/tasks?assignment_id=${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -73,5 +73,5 @@ const getAssignmentsByStudentId = (id) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAssignments, getSingleAssignment, createAssignment, updateAssignment, deleteAssignment, getAssignmentsByStudentId,
+  getTasks, getSingleTask, createTask, updateTask, deleteTask, getTasksByAssignmentId,
 };
