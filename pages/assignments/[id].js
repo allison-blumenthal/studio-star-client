@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import moment from 'moment';
 import { getSingleAssignment } from '../../utils/data/assignmentData';
 import { getTasksByAssignmentId } from '../../utils/data/taskData';
 import TaskCard from '../../components/task/TaskCard';
@@ -15,8 +16,6 @@ export default function AssignmentDetails() {
     getSingleAssignment(id).then((data) => setAssignment(data));
   };
 
-  console.warn(assignment);
-
   const getAssignmentTasks = () => {
     getTasksByAssignmentId(id).then((data) => setTasks(data));
   };
@@ -27,11 +26,11 @@ export default function AssignmentDetails() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const date = new Date(assignment.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+  const formattedDate = moment(assignment.date).format('MM/DD/YYYY');
 
   return (
     <div>
-      <h1>{date} Assignment</h1>
+      <h1>{formattedDate} Assignment</h1>
       {tasks.map((task) => (
         <section key={`task--${task.id}`} className="task">
           <TaskCard taskObj={task} onUpdate={getAssignmentTasks} />
