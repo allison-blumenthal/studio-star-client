@@ -30,19 +30,18 @@ export default function AssignmentDetails() {
   };
 
   const getAssignmentStudent = () => {
-    getUserByAssignmentId(id).then((data) => setStudent(data));
+    getUserByAssignmentId(id).then((data) => setStudent(data[0]));
   };
 
   useEffect(() => {
     getCurrentAssignment();
     getAssignmentTasks();
+    getAssignmentStudent();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const deleteThisAssignment = () => {
-    getAssignmentStudent();
     if (window.confirm('Delete this assignment?')) {
-      console.warn('student', student.id);
       deleteAssignment(id).then(() => router.push(`/students/${student.id}`));
     }
   };

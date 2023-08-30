@@ -8,7 +8,7 @@ const getSingleUser = (id) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => resolve(data)) // will resolve a single object
     .catch(reject);
 });
 
@@ -20,7 +20,7 @@ const getUserByAssignmentId = (id) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => resolve(data)) // will resolve a single object
     .catch(reject);
 });
 
