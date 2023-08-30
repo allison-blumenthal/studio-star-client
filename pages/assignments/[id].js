@@ -8,14 +8,14 @@ import { getTasksByAssignmentId } from '../../utils/data/taskData';
 import TaskCard from '../../components/task/TaskCard';
 import editIcon from '../../src/assets/images/edit-icon.png';
 import deleteIcon from '../../src/assets/images/delete-icon.png';
-import getSingleUser from '../../utils/data/userData';
+import { getUserByAssignmentId } from '../../utils/data/userData';
 import { useAuth } from '../../utils/context/authContext';
 import taskIcon from '../../src/assets/images/checked-checkbox-icon.png';
 
 export default function AssignmentDetails() {
   const [assignment, setAssignment] = useState({});
   const [tasks, setTasks] = useState([]);
-  const [student, setStudent] = useState([]);
+  const [student, setStudent] = useState({});
   const router = useRouter();
   const { user } = useAuth();
 
@@ -29,8 +29,8 @@ export default function AssignmentDetails() {
     getTasksByAssignmentId(id).then((data) => setTasks(data));
   };
 
-  const getCurrentStudent = () => {
-    getSingleUser(assignment.student_id.id).then((data) => setStudent(data));
+  const getAssignmentStudent = () => {
+    getUserByAssignmentId(id).then((data) => setStudent(data));
   };
 
   useEffect(() => {
@@ -40,10 +40,10 @@ export default function AssignmentDetails() {
   }, [id]);
 
   const deleteThisAssignment = () => {
-    getCurrentStudent();
-    console.warn('current student', student);
+    getAssignmentStudent();
     if (window.confirm('Delete this assignment?')) {
-      deleteAssignment(assignment.id).then(() => router.push(`/students/${student.id}`));
+      console.warn('student', student.id);
+      deleteAssignment(id).then(() => router.push(`/students/${student.id}`));
     }
   };
 

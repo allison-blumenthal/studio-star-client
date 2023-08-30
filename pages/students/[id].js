@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Form, Button } from 'react-bootstrap';
 import moment from 'moment';
-import getSingleUser from '../../utils/data/userData';
+import { getSingleUser } from '../../utils/data/userData';
 import { createAssignment, getAssignmentsByStudentId } from '../../utils/data/assignmentData';
 import AssignmentCard from '../../components/assignment/AssignmentCard';
 import assignmentIcon from '../../src/assets/images/assignment-icon.png';
@@ -14,12 +14,17 @@ export default function StudentAssignments() {
   const [assignments, setAssignments] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
-  const [formData, setFormData] = useState({
-    date: null,
-    studentId: '',
-  });
+  const [formData, setFormData] = useState({});
 
   const { id } = router.query;
+
+  const getCurrentStudent = () => {
+    getSingleUser(id).then((data) => setStudent(data));
+  };
+
+  const getStudentAssignments = () => {
+    getAssignmentsByStudentId(id).then((data) => setAssignments(data));
+  };
 
   const setDate = (date) => {
     // formats the date for the backend using moment.js
@@ -30,33 +35,23 @@ export default function StudentAssignments() {
     }));
   };
 
-  const getCurrentStudent = () => {
-    getSingleUser(id).then((data) => setStudent(data));
-    console.warn('current student', student);
-  };
-
-  const getStudentAssignments = () => {
-    getAssignmentsByStudentId(id).then((data) => setAssignments(data));
-    console.warn('assignments', assignments);
-  };
-
-  useEffect(() => {
-    getCurrentStudent();
-    getStudentAssignments();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
   const setData = () => {
     const currentDate = new Date();
     setDate(currentDate);
 
     setFormData((prevState) => ({
       ...prevState,
-      studentId: student.id,
+      studentId: id,
       date: moment(currentDate).format('YYYY-MM-DD'),
     }));
-    console.warn(formData);
   };
+
+  useEffect(() => {
+    getCurrentStudent();
+    getStudentAssignments();
+    setData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const handleSubmit = () => {
     createAssignment(formData).then((assignment) => router.push(`/assignments/${assignment.id}`));
@@ -64,7 +59,6 @@ export default function StudentAssignments() {
 
   const handleClick = () => {
     if (window.confirm('Create new assignment?')) {
-      setData();
       handleSubmit();
     }
   };
