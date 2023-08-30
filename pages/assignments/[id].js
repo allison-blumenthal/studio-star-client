@@ -10,6 +10,7 @@ import editIcon from '../../src/assets/images/edit-icon.png';
 import deleteIcon from '../../src/assets/images/delete-icon.png';
 import getSingleUser from '../../utils/data/userData';
 import { useAuth } from '../../utils/context/authContext';
+import taskIcon from '../../src/assets/images/checked-checkbox-icon.png';
 
 export default function AssignmentDetails() {
   const [assignment, setAssignment] = useState({});
@@ -45,8 +46,12 @@ export default function AssignmentDetails() {
     }
   };
 
-  const handleClick = () => {
+  const handleEditClick = () => {
     router.push(`/assignments/edit/${assignment.id}`);
+  };
+
+  const handleTaskClick = () => {
+    router.push('/tasks/new');
   };
 
   const formattedDate = moment(assignment.date).format('MM/DD/YYYY');
@@ -56,11 +61,14 @@ export default function AssignmentDetails() {
       <h1>{formattedDate} Assignment</h1>
       {user.is_teacher === true ? (
         <>
-          <Button onClick={handleClick}>
+          <Button onClick={handleEditClick}>
             <Image src={editIcon} alt="edit icon" />
           </Button>
           <Button onClick={deleteThisAssignment}>
             <Image src={deleteIcon} alt="delete icon" />
+          </Button>
+          <Button onClick={handleTaskClick}>
+            <Image src={taskIcon} alt="task icon" />
           </Button>
         </>
       ) : ('')}
