@@ -72,6 +72,18 @@ const getAssignmentsByStudentId = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAssignmentByTaskId = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/users?assignment_id=${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data)) // will resolve a single object
+    .catch(reject);
+});
+
 export {
-  getAssignments, getSingleAssignment, createAssignment, updateAssignment, deleteAssignment, getAssignmentsByStudentId,
+  getAssignments, getSingleAssignment, createAssignment, updateAssignment, deleteAssignment, getAssignmentsByStudentId, getAssignmentByTaskId,
 };
