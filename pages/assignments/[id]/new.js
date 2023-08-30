@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import TaskForm from '../../components/task/TaskForm';
+import TaskForm from '../../../components/task/TaskForm';
 
 export default function NewTask() {
   return (

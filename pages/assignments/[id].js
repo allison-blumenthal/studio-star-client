@@ -41,17 +41,18 @@ export default function AssignmentDetails() {
 
   const deleteThisAssignment = () => {
     getCurrentStudent();
+    console.warn('current student', student);
     if (window.confirm('Delete this assignment?')) {
       deleteAssignment(assignment.id).then(() => router.push(`/students/${student.id}`));
     }
   };
 
   const handleEditClick = () => {
-    router.push(`/assignments/edit/${assignment.id}`);
+    router.push(`/assignments/edit/${id}`);
   };
 
   const handleTaskClick = () => {
-    router.push('/tasks/new');
+    router.push(`/assignments/${id}/new`);
   };
 
   const formattedDate = moment(assignment.date).format('MM/DD/YYYY');

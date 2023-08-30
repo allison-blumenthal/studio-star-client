@@ -24,8 +24,6 @@ export default function NavBar() {
     getStudioByTeacher(user.uid, user.id).then((studio) => setTeacherStudio(studio[0]));
   };
 
-  console.warn('teacherstudio:', teacherStudio);
-
   useEffect(() => {
     getTeacherStudio();
   // eslint-disable-next-line react-hooks/exhaustive-deps

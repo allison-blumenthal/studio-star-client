@@ -32,10 +32,12 @@ export default function StudentAssignments() {
 
   const getCurrentStudent = () => {
     getSingleUser(id).then((data) => setStudent(data));
+    console.warn('current student', student);
   };
 
   const getStudentAssignments = () => {
     getAssignmentsByStudentId(id).then((data) => setAssignments(data));
+    console.warn('assignments', assignments);
   };
 
   useEffect(() => {
@@ -44,20 +46,25 @@ export default function StudentAssignments() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const setData = () => {
+    const currentDate = new Date();
+    setDate(currentDate);
+
+    setFormData((prevState) => ({
+      ...prevState,
+      studentId: student.id,
+      date: moment(currentDate).format('YYYY-MM-DD'),
+    }));
+    console.warn(formData);
+  };
+
   const handleSubmit = () => {
     createAssignment(formData).then((assignment) => router.push(`/assignments/${assignment.id}`));
   };
 
   const handleClick = () => {
     if (window.confirm('Create new assignment?')) {
-      const currentDate = new Date();
-      setDate(currentDate);
-      setFormData((prevState) => ({
-        ...prevState,
-        studentId: id,
-        date: moment(currentDate).format('YYYY-MM-DD'),
-      }));
-      console.warn(formData);
+      setData();
       handleSubmit();
     }
   };
