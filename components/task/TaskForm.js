@@ -55,6 +55,7 @@ function TaskForm({ taskObj }) {
         currentStickers: Number(currentTask.currentStickers),
         isCompleted: currentTask.isCompleted,
       };
+
       updateTask(updatedTask).then((task) => router.push(`/tasks/${task.id}`));
     } else {
       const newTask = {
@@ -65,7 +66,7 @@ function TaskForm({ taskObj }) {
         currentStickers: Number(currentTask.currentStickers),
         isCompleted: currentTask.isCompleted,
       };
-      console.warn(newTask);
+
       createTask(newTask).then((task) => router.push(`/tasks/${task.id}`));
     }
   };
