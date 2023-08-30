@@ -10,6 +10,8 @@ import stickerIcon from '../../src/assets/images/star-icon.png';
 import { getAssignmentByTaskId } from '../../utils/data/assignmentData';
 import { getTaskStickersByTaskId } from '../../utils/data/taskStickerData';
 import StickerCard from '../../components/sticker/StickerCard';
+import checkboxIcon from '../../src/assets/images/checked-checkbox-icon.png';
+import uncheckedBoxIcon from '../../src/assets/images/empty-checkbox-icon.png';
 
 export default function TaskDetails() {
   const [task, setTask] = useState({});
@@ -79,6 +81,12 @@ export default function TaskDetails() {
           <br />
         </section>
       ))}
+      <h3>Completion Status:</h3>
+      {task.is_complete === true ? (
+        <Image src={checkboxIcon} alt="checkbox icon" />
+      ) : (
+        <Image src={uncheckedBoxIcon} alt="unchecked box icon" />
+      )}
     </div>
   );
 }
