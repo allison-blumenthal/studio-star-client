@@ -2,26 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import editIcon from '../../src/assets/images/edit-icon.png';
 import deleteIcon from '../../src/assets/images/delete-icon.png';
 import { deleteTaskSticker } from '../../utils/data/taskStickerData';
 
 // eslint-disable-next-line no-unused-vars
-function StickerCard({ stickerObj, onUpdate }) {
-  const router = useRouter();
-
+function TaskStickerCard({ taskStickerObj, onUpdate }) {
   const deleteThisTaskSticker = () => {
     if (window.confirm('Delete this sticker?')) {
-      deleteTaskSticker(stickerObj.id).then(onUpdate);
+      deleteTaskSticker(taskStickerObj.id).then(onUpdate);
     }
   };
 
-  const handleEditClick = () => {
-    router.push(`/stickers/edit/${stickerObj.id}`);
-  };
-
-  const emoji = String.fromCodePoint(parseInt(stickerObj.sticker_id.unicode.substr(2), 16));
+  const emoji = String.fromCodePoint(parseInt(taskStickerObj.sticker_id.unicode.substr(2), 16));
 
   return (
     <>
@@ -32,9 +24,6 @@ function StickerCard({ stickerObj, onUpdate }) {
           </h1>
         </Card.Body>
         <div className="btn-container">
-          <Button onClick={handleEditClick}>
-            <Image src={editIcon} alt="edit icon" />
-          </Button>
           <Button onClick={deleteThisTaskSticker}>
             <Image src={deleteIcon} alt="delete icon" />
           </Button>
@@ -44,8 +33,8 @@ function StickerCard({ stickerObj, onUpdate }) {
   );
 }
 
-StickerCard.propTypes = {
-  stickerObj: PropTypes.shape({
+TaskStickerCard.propTypes = {
+  taskStickerObj: PropTypes.shape({
     id: PropTypes.number,
     sticker_id: PropTypes.shape({
       unicode: PropTypes.string,
@@ -54,4 +43,4 @@ StickerCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default StickerCard;
+export default TaskStickerCard;

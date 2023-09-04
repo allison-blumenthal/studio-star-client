@@ -9,7 +9,7 @@ import deleteIcon from '../../src/assets/images/delete-icon.png';
 import stickerIcon from '../../src/assets/images/star-icon.png';
 import { getAssignmentByTaskId } from '../../utils/data/assignmentData';
 import { getTaskStickersByTaskId } from '../../utils/data/taskStickerData';
-import StickerCard from '../../components/sticker/StickerCard';
+import TaskStickerCard from '../../components/sticker/TaskStickerCard';
 import checkboxIcon from '../../src/assets/images/checked-checkbox-icon.png';
 import uncheckedBoxIcon from '../../src/assets/images/empty-checkbox-icon.png';
 
@@ -77,7 +77,7 @@ export default function TaskDetails() {
       <h3>Stickers earned so far:</h3>
       {taskStickers.map((taskSticker) => (
         <section key={`taskSticker--${taskSticker.id}`} className="taskSticker">
-          <StickerCard stickerObj={taskSticker} onUpdate={getTaskStickers} />
+          <TaskStickerCard taskStickerObj={taskSticker} onUpdate={getTaskStickers} />
           <br />
         </section>
       ))}
