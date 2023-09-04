@@ -53,6 +53,7 @@ export default function TaskDetails() {
 
   const handleStickerClick = () => {
     router.push(`/tasks/${id}/new`);
+    console.warn(task);
   };
 
   return (
@@ -73,8 +74,8 @@ export default function TaskDetails() {
         </Button>
       )}
       <h3>Description: {task.description}</h3>
-      <h3>Stickers to earn: {task.sticker_goal}</h3>
-      <h3>Stickers earned so far:</h3>
+      <h3>Sticker Goal: {task.sticker_goal}</h3>
+      <h3>Stickers earned so far: {task.current_stickers}</h3>
       {taskStickers.map((taskSticker) => (
         <section key={`taskSticker--${taskSticker.id}`} className="taskSticker">
           <TaskStickerCard taskStickerObj={taskSticker} onUpdate={getTaskStickers} />
@@ -82,7 +83,7 @@ export default function TaskDetails() {
         </section>
       ))}
       <h3>Completion Status:</h3>
-      {task.is_complete === true ? (
+      {task.is_completed === true ? (
         <Image src={checkboxIcon} alt="checkbox icon" />
       ) : (
         <Image src={uncheckedBoxIcon} alt="unchecked box icon" />
