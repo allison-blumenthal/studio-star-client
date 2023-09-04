@@ -17,7 +17,7 @@ function TaskStickerCard({ taskStickerObj, onUpdate }) {
 
   return (
     <>
-      <Card className="text-center sticker-card">
+      <Card className="text-center task-sticker-card">
         <Card.Body>
           <h1 style={{ fontSize: '150px' }}>
             {emoji}
