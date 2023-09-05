@@ -53,7 +53,6 @@ export default function TaskDetails() {
 
   const handleStickerClick = () => {
     router.push(`/tasks/${id}/new`);
-    console.warn(task);
   };
 
   return (
@@ -69,7 +68,7 @@ export default function TaskDetails() {
           </Button>
         </>
       ) : (
-        <Button onClick={handleStickerClick}>
+        <Button onClick={handleStickerClick} onUpdate={getCurrentTask}>
           <Image src={stickerIcon} alt="sticker icon" />
         </Button>
       )}
@@ -78,7 +77,7 @@ export default function TaskDetails() {
       <h3>Stickers earned so far: {task.current_stickers}</h3>
       {taskStickers.map((taskSticker) => (
         <section key={`taskSticker--${taskSticker.id}`} className="taskSticker">
-          <TaskStickerCard taskStickerObj={taskSticker} onUpdate={getTaskStickers} />
+          <TaskStickerCard taskStickerObj={taskSticker} onUpdate={() => { getTaskStickers(); getCurrentTask(); }} />
           <br />
         </section>
       ))}
