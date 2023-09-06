@@ -9,7 +9,6 @@ import unchecked from '../../src/assets/images/empty-checkbox-icon.png';
 
 // eslint-disable-next-line no-unused-vars
 function TaskCard({ taskObj, onUpdate }) {
-  console.warn(taskObj);
   return (
     <Card className="text-center assignment-card" style={{ width: '18rem', margin: '10px' }}>
       <Link href={`/tasks/${taskObj.id}`} passHref>

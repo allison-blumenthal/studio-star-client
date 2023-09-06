@@ -38,7 +38,7 @@ export default function TaskStickerForm() {
       taskId: id,
       stickerId: currentSticker.id,
     };
-    console.warn(newTaskSticker);
+
     createTaskSticker(newTaskSticker).then(router.push(`/tasks/${id}`));
   };
 

@@ -11,8 +11,6 @@ function StudiosPage() {
     getStudios(user.uid).then((data) => setStudios(data));
   };
 
-  console.warn(studios);
-
   useEffect(() => {
     getAllStudios();
   // eslint-disable-next-line react-hooks/exhaustive-deps

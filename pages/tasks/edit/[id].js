@@ -5,17 +5,12 @@ import TaskForm from '../../../components/task/TaskForm';
 import { getSingleTask } from '../../../utils/data/taskData';
 
 const EditTask = () => {
-  const [editTask, setEditProduct] = useState({});
+  const [editTask, setEditTask] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
-  const getTaskDetails = async () => {
-    try {
-      const details = await getSingleTask(id);
-      setEditProduct(details);
-    } catch (error) {
-      console.error('Error fetching product details: ', error);
-    }
+  const getTaskDetails = () => {
+    getSingleTask(id).then(setEditTask);
   };
 
   useEffect(() => {

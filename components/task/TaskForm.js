@@ -30,7 +30,6 @@ function TaskForm({ taskObj }) {
         isCompleted: taskObj.is_completed,
       });
     }
-    console.warn(currentTask);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [taskObj]);
 
@@ -48,7 +47,7 @@ function TaskForm({ taskObj }) {
     if (taskObj.id) {
       const updatedTask = {
         id: currentTask.id,
-        assignmentId: currentTask.assignmentId,
+        assignmentId: currentTask.assignmentId.id,
         title: currentTask.title,
         description: currentTask.description,
         stickerGoal: Number(currentTask.stickerGoal),
@@ -56,7 +55,7 @@ function TaskForm({ taskObj }) {
         isCompleted: currentTask.isCompleted,
       };
 
-      updateTask(updatedTask).then((task) => router.push(`/tasks/${task.id}`));
+      updateTask(updatedTask).then(router.push(`/tasks/${id}`));
     } else {
       const newTask = {
         assignmentId: id,
@@ -97,7 +96,9 @@ function TaskForm({ taskObj }) {
 TaskForm.propTypes = {
   taskObj: PropTypes.shape({
     id: PropTypes.number,
-    assignment_id: PropTypes.number,
+    assignment_id: PropTypes.shape({
+      id: PropTypes.number,
+    }),
     title: PropTypes.string,
     description: PropTypes.string,
     sticker_goal: PropTypes.number,
