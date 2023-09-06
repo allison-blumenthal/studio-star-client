@@ -10,9 +10,9 @@
 - Upon first login, the user registers for the app as a teacher or student. If a teacher, they create and name their studio. If a student, they select one or more teachers to enroll with. 
 - Teachers have a roster page showing all students enrolled in their studio, who they can unenroll at any time. 
 - From the roster page, teachers can navigate to a student's page and CRUD assignments, and tasks within assignments.
-- Students each have a personal assignment page allowing them to view all assignments and tasks.
+- Students have a personal assignment page allowing them to view all assignments and tasks created by their teacher.
 - On each task, students (and teachers) can choose stickers to log practicing. Once the practice goal on a task has been met, the task updates to "complete."
-- Both user types can view a profile page with their user details. 
+- Both teachers and students can view a profile page with their user details. 
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
 - [ERD](https://drawsql.app/teams/nss-e21/diagrams/studio-star-erd)
@@ -57,8 +57,6 @@
 ```
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
-
-## Steps to run this project locally:
 
 
 ## Contributors
