@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-// import StickerForm from '../../../components/sticker/StickerForm';
+import TaskStickerForm from '../../../components/sticker/TaskStickerForm';
 
 export default function NewSticker() {
   return (
@@ -10,7 +10,7 @@ export default function NewSticker() {
       </Head>
       <div>
         <h2>Choose a Sticker</h2>
-        {/* <StickerForm /> */}
+        <TaskStickerForm />
       </div>
     </>
   );

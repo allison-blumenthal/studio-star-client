@@ -73,7 +73,7 @@ const getAssignmentsByStudentId = (id) => new Promise((resolve, reject) => {
 });
 
 const getAssignmentByTaskId = (id) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/users?assignment_id=${id}`, {
+  fetch(`${clientCredentials.databaseURL}/assignments?task_id=${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

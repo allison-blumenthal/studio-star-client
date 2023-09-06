@@ -9,7 +9,7 @@ import deleteIcon from '../../src/assets/images/delete-icon.png';
 import stickerIcon from '../../src/assets/images/star-icon.png';
 import { getAssignmentByTaskId } from '../../utils/data/assignmentData';
 import { getTaskStickersByTaskId } from '../../utils/data/taskStickerData';
-import StickerCard from '../../components/sticker/StickerCard';
+import TaskStickerCard from '../../components/sticker/TaskStickerCard';
 import checkboxIcon from '../../src/assets/images/checked-checkbox-icon.png';
 import uncheckedBoxIcon from '../../src/assets/images/empty-checkbox-icon.png';
 
@@ -68,21 +68,21 @@ export default function TaskDetails() {
           </Button>
         </>
       ) : (
-        <Button onClick={handleStickerClick}>
+        <Button onClick={handleStickerClick} onUpdate={getCurrentTask}>
           <Image src={stickerIcon} alt="sticker icon" />
         </Button>
       )}
       <h3>Description: {task.description}</h3>
-      <h3>Stickers to earn: {task.sticker_goal}</h3>
-      <h3>Stickers earned so far:</h3>
+      <h3>Sticker Goal: {task.sticker_goal}</h3>
+      <h3>Stickers earned so far: {task.current_stickers}</h3>
       {taskStickers.map((taskSticker) => (
         <section key={`taskSticker--${taskSticker.id}`} className="taskSticker">
-          <StickerCard stickerObj={taskSticker} onUpdate={getTaskStickers} />
+          <TaskStickerCard taskStickerObj={taskSticker} onUpdate={() => { getTaskStickers(); getCurrentTask(); }} />
           <br />
         </section>
       ))}
       <h3>Completion Status:</h3>
-      {task.is_complete === true ? (
+      {task.is_completed === true ? (
         <Image src={checkboxIcon} alt="checkbox icon" />
       ) : (
         <Image src={uncheckedBoxIcon} alt="unchecked box icon" />

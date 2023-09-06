@@ -12,6 +12,19 @@ const getTaskStickersByTaskId = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createTaskSticker = (taskSticker) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/taskstickers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(taskSticker),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const deleteTaskSticker = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/taskstickers/${id}`, {
     method: 'DELETE',
@@ -23,4 +36,4 @@ const deleteTaskSticker = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getTaskStickersByTaskId, deleteTaskSticker };
+export { getTaskStickersByTaskId, createTaskSticker, deleteTaskSticker };
