@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-import 'bootstrap/dist/css/bootstrap.min.css';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
 import { AuthProvider } from '../utils/context/authContext';
 import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector';
+import 'tailwindcss/tailwind.css';
 
 function MyApp({ Component, pageProps }) {
   return (
