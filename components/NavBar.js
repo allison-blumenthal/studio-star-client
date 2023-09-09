@@ -32,8 +32,8 @@ export default function NavBar() {
           <div>
             <Link passHref href="/">
               <a className="text-white text-lg">
-                <div className="flex items-center">
-                  <Logo className="w-10 h-10" />
+                <div className="flex items-center ">
+                  <Logo className="" />
                 </div>
               </a>
             </Link>
