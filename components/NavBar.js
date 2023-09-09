@@ -30,7 +30,7 @@ export default function NavBar() {
   }, [user]);
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="navbar-style">
+    <Navbar collapseOnSelect expand="lg" className="navbar">
       <Container>
 
         <Link passHref href="/">

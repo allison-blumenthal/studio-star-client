@@ -4,15 +4,7 @@ function Home() {
   const { user } = useAuth();
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
+    <div>
       {user.is_teacher === true ? (
         <>
           <h1>Welcome to Studio Star, {user.first_name}! </h1>

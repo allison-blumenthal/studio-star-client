@@ -1,4 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -21,11 +24,8 @@ body {
   background-color: grey;
 }
 
-.navbar-style {
+.navbar {
   background-color: lightblue;
-  display: flex;
-  justify-content: space-between;
-
 }
 
 /* logo  */
