@@ -1,12 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import {
-  Navbar, //
-  Container,
-  Nav,
-  Button,
-} from 'react-bootstrap';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
 import Logo from './Logo';
@@ -30,51 +24,50 @@ export default function NavBar() {
   }, [user]);
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="navbar-style">
-      <Container>
+    <nav className="bg-gray-100">
+      <div className="px-8 mx-auto border border-red-400">
+        <div className="flex justify-between">
 
-        <Link passHref href="/">
-          <Navbar.Brand>
-            <div className="logo">
-              <Logo />
-            </div>
-          </Navbar.Brand>
-        </Link>
-
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
-            {teacherStudio ? (
-              <Link passHref href={`/studios/${teacherStudio.id}`}>
-                <Nav.Link>
-                  <div className="nav-icon">
-                    <Image src={teacher} alt="teacher icon" />
-                  </div>
-                </Nav.Link>
-              </Link>
-            ) : (
-              <Link passHref href={`/students/${user.id}`}>
-                <Nav.Link>
-                  <div className="nav-icon">
-                    <Image src={assignment} alt="assignment icon" />
-                  </div>
-                </Nav.Link>
-              </Link>
-            )}
-            <Link passHref href={`/profile/${user.id}`}>
-              <Nav.Link>
-                <div className="nav-icon">
-                  <Image src={profile} alt="profile icon" />
-                </div>
-              </Nav.Link>
+          <div>
+            <Link passHref href="/">
+              <div className="logo">
+                <Logo />
+              </div>
             </Link>
-            <Button variant="danger" onClick={signOut}>
+          </div>
+
+          {teacherStudio ? (
+            <div>
+              <Link passHref href={`/studios/${teacherStudio.id}`}>
+                <div className="nav-icon">
+                  <Image src={teacher} alt="teacher icon" />
+                </div>
+
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link passHref href={`/students/${user.id}`}>
+                <div className="nav-icon">
+                  <Image src={assignment} alt="assignment icon" />
+                </div>
+              </Link>
+            </div>
+          )}
+          <div>
+            <Link passHref href={`/profile/${user.id}`}>
+              <div className="nav-icon">
+                <Image src={profile} alt="profile icon" />
+              </div>
+            </Link>
+          </div>
+          <div>
+            <button type="button" onClick={signOut}>
               Log Out
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }
