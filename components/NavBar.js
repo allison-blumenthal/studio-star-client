@@ -1,6 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import {
+  Navbar, //
+  Container,
+  Nav,
+  Button,
+} from 'react-bootstrap';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
 import Logo from './Logo';
@@ -24,64 +30,51 @@ export default function NavBar() {
   }, [user]);
 
   return (
-    <nav className="bg-blue-100">
-      <div className="xl:max-w-6xl mx-auto border border-red-400">
-        <div className="flex justify-between">
+    <Navbar collapseOnSelect expand="lg" className="navbar-style">
+      <Container>
 
-          {/* logo */}
-          <div>
-            <Link passHref href="/">
-              <a className="text-white text-lg">
-                <div className="flex items-center ">
-                  <Logo className="" />
-                </div>
-              </a>
-            </Link>
-          </div>
+        <Link passHref href="/">
+          <Navbar.Brand>
+            <div className="logo">
+              <Logo />
+            </div>
+          </Navbar.Brand>
+        </Link>
 
-          {user.is_teacher ? (
-            // teacher view link
-            <div>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
+            {teacherStudio ? (
               <Link passHref href={`/studios/${teacherStudio.id}`}>
-                <a className="text-white flex items-center">
-                  <Image src={teacher} alt="teacher icon" />
-                </a>
+                <Nav.Link>
+                  <div className="nav-icon">
+                    <Image src={teacher} alt="teacher icon" />
+                  </div>
+                </Nav.Link>
               </Link>
-            </div>
-          ) : (
-
-          // student view link
-            <div>
+            ) : (
               <Link passHref href={`/students/${user.id}`}>
-                <a className="text-white flex items-center">
-                  <Image src={assignment} alt="assignment icon" />
-                </a>
+                <Nav.Link>
+                  <div className="nav-icon">
+                    <Image src={assignment} alt="assignment icon" />
+                  </div>
+                </Nav.Link>
               </Link>
-            </div>
-          )}
-
-          {/* profile link */}
-          <div>
+            )}
             <Link passHref href={`/profile/${user.id}`}>
-              <a className="text-white flex items-center">
-                <Image src={profile} alt="profile icon" />
-              </a>
+              <Nav.Link>
+                <div className="nav-icon">
+                  <Image src={profile} alt="profile icon" />
+                </div>
+              </Nav.Link>
             </Link>
-          </div>
-
-          {/* logout button */}
-          <div>
-            <button
-              type="button"
-              className="bg-red-500 text-white p-2 rounded-md focus:outline-none focus:ring focus:ring-red-200"
-              onClick={signOut}
-            >
+            <Button variant="danger" onClick={signOut}>
               Log Out
-            </button>
-          </div>
-
-        </div>
-      </div>
-    </nav>
+            </Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
