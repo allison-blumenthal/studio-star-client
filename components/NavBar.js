@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,52 +19,51 @@ export default function NavBar() {
 
   useEffect(() => {
     getTeacherStudio();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
-    <nav className="bg-gray-100">
-      <div className="px-8 mx-auto border border-red-400">
-        <div className="flex justify-between">
+    <nav className="bg-blue-400">
+      <div className="mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
 
-          <div>
+          <div className="h-16 w-16 md:h-16 md:w-16 lg:h-20 lg:w-20">
             <Link passHref href="/">
-              <div className="logo">
+              <button type="button">
                 <Logo />
-              </div>
+              </button>
             </Link>
           </div>
 
-          {teacherStudio ? (
-            <div>
-              <Link passHref href={`/studios/${teacherStudio.id}`}>
-                <div className="nav-icon">
+          <div className="flex space-x-4 items-center">
+            {teacherStudio ? (
+              <button type="button">
+                <Link passHref href={`/studios/${teacherStudio.id}`}>
                   <Image src={teacher} alt="teacher icon" />
-                </div>
-
-              </Link>
-            </div>
-          ) : (
-            <div>
-              <Link passHref href={`/students/${user.id}`}>
-                <div className="nav-icon">
+                </Link>
+              </button>
+            ) : (
+              <button type="button">
+                <Link passHref href={`/students/${user.id}`}>
                   <Image src={assignment} alt="assignment icon" />
-                </div>
-              </Link>
-            </div>
-          )}
-          <div>
-            <Link passHref href={`/profile/${user.id}`}>
-              <div className="nav-icon">
+                </Link>
+              </button>
+            )}
+
+            <button type="button">
+              <Link passHref href={`/profile/${user.id}`}>
                 <Image src={profile} alt="profile icon" />
-              </div>
-            </Link>
-          </div>
-          <div>
-            <button type="button" onClick={signOut}>
+              </Link>
+            </button>
+
+            <button
+              type="button"
+              onClick={signOut}
+              className="bg-black hover:bg-gray-700 text-white py-2 px-4 rounded"
+            >
               Log Out
             </button>
           </div>
+
         </div>
       </div>
     </nav>
