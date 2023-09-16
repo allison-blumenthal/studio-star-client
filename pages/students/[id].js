@@ -64,22 +64,27 @@ export default function StudentAssignments() {
   };
 
   return (
-    <div>
-      <h1>{student.first_name}&apos;s Assignments</h1>
-      {user.is_teacher === true
-        ? (
-          <Form onSubmit={handleSubmit}>
-            <Button onClick={handleClick}>
-              <Image src={assignmentIcon} alt="assignment icon" />
-            </Button>
-          </Form>
-        ) : ('')}
-      {assignments.map((assignment) => (
-        <section key={`assignment--${assignment.id}`} className="assignment">
-          <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
-          <br />
-        </section>
-      ))}
+    <div className="min-h-screen p-4 flex flex-col justify-center items-center">
+      <h1 className="text-4xl p-4 font-semibold mb-4 text-center text-gray-800">{student.first_name}&apos;s Assignments</h1>
+      {user.is_teacher === true && (
+        <Form onSubmit={handleSubmit} className="text-center mb-4">
+          <Button onClick={handleClick}>
+            <Image src={assignmentIcon} alt="assignment icon" />
+          </Button>
+        </Form>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {assignments.map((assignment) => (
+          <section
+            key={`assignment--${assignment.id}`}
+            className="flex mb-3"
+          >
+            <div className="bg-white rounded-lg shadow-lg p-4">
+              <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
