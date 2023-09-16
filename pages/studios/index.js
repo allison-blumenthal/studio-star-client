@@ -17,15 +17,20 @@ function StudiosPage() {
   }, [user]);
 
   return (
-    <article className="studios">
-      <h1>Studios</h1>
-      {studios.map((studio) => (
-        <section key={`studio--${studio.id}`} className="studio">
-          <StudioCard studioObj={studio} onUpdate={getAllStudios} enrolled={studio.enrolled} />
-          <br />
-        </section>
-      ))}
-    </article>
+    <div className="min-h-screen p-4">
+      <h1 className="text-4xl p-4 font-semibold mb-4 text-center text-gray-800">Studios</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {studios.map((studio) => (
+          <section
+            key={`studio--${studio.id}`}
+            className="bg-white rounded-lg shadow-lg p-4"
+          >
+            <StudioCard studioObj={studio} onUpdate={getAllStudios} enrolled={studio.enrolled} />
+            <br />
+          </section>
+        ))}
+      </div>
+    </div>
   );
 }
 
