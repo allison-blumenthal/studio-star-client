@@ -1,4 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import 'bootstrap/dist/css/bootstrap.css';
+
 
 html,
 body {
@@ -19,31 +24,4 @@ a {
 
 body {
   background-color: grey;
-}
-
-.navbar-style {
-  background-color: lightblue;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-/* logo  */
-.logo {
-  height: 80px;
-  width: 80px;
-}
-
-.logo:hover {
-  opacity: 0.5;
-}
-
-/* icons */
-.nav-icon {
-  height: 80px;
-  width: 80px;
-}
-
-.nav-icon:hover {
-  opacity: 0.5;
 }
