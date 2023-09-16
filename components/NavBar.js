@@ -19,6 +19,7 @@ export default function NavBar() {
 
   useEffect(() => {
     getTeacherStudio();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (

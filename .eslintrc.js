@@ -13,6 +13,10 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: true },
+    ],
     'no-unused-vars': 'error',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
