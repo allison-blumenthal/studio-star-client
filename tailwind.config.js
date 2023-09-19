@@ -12,4 +12,8 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  fontFamily: {
+    bevan: ['Bevan', 'serif'],
+    coustard: ['Coustard', 'serif'],
+  },
 };

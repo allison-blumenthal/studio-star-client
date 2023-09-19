@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'bootstrap/dist/css/bootstrap.css';
-
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #bde0fe;
 }
 
 a {
@@ -22,6 +19,10 @@ a {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #bde0fe;
+.bevan {
+  font-family: 'Bevan', serif;
+}
+
+.coustard {
+  font-family: 'Coustard', serif;
 }
