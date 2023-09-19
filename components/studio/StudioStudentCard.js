@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { unenrollStudio } from '../../utils/data/studioData';
@@ -22,24 +21,27 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
   };
 
   return (
-    <>
-      <Card className="text-center">
-        <Card.Header>{studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}</Card.Header>
-        <Card.Body>
-          <div className="btn-container">
-            <Button onClick={handleClick}>
-              <Image src={assignment} alt="assignment icon" />
-            </Button>
-            <Button onClick={unenroll} className="delete-btn">
-              <Image src={trash} alt="remove student icon" />
-            </Button>
-          </div>
-          <Card.Text>{studioStudentObj.student_id.pronouns}</Card.Text>
-          <Card.Img className="img" src={studioStudentObj.student_id.profile_image_url} alt="student" />
-        </Card.Body>
-        <Card.Footer className="text-muted">{studioStudentObj.student_id.instrument}</Card.Footer>
-      </Card>
-    </>
+    <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 mb-6">
+      <div className="flex">
+        <h3 className="text-lg font-semibold mb-2">
+          {studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}
+        </h3>
+        <p className="text-gray-600 ml-auto">{studioStudentObj.student_id.instrument}</p>
+      </div>
+      <div className="flex justify-between items-center mb-4">
+        <button onClick={handleClick} type="button">
+          <Image src={assignment} alt="assignment icon" width={24} height={24} />
+        </button>
+      </div>
+      <p className="text-gray-600 mb-2">{studioStudentObj.student_id.pronouns}</p>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={studioStudentObj.student_id.profile_image_url} alt="student" className="rounded-2xl mt-4" />
+      <div className="text-right">
+        <button onClick={unenroll} type="button">
+          <Image src={trash} alt="remove student icon" width={20} height={20} />
+        </button>
+      </div>
+    </div>
   );
 }
 
