@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
-import Logo from './Logo';
+import Logo from './logo/Logo';
 import { useAuth } from '../utils/context/authContext';
 import teacher from '../src/assets/images/teacher-icon.png';
 import assignment from '../src/assets/images/assignment-icon.png';
