@@ -32,17 +32,19 @@ function StudioCard({ studioObj, onUpdate }) {
           <Card.Img className="teacher-img" src={studioObj.teacher_id.profile_image_url} alt="teacher" />
         </Card.Body>
         <Card.Footer className="text-muted">Instrument: {studioObj.teacher_id.instrument}</Card.Footer>
-        <div>
-          <label htmlFor="enrollmentCheckbox">
-            <input
-              type="checkbox"
-              id="enrollmentCheckbox"
-              checked={enrolled}
-              onChange={toggleEnrollment}
-            />
-            {enrolled ? 'Ennrolled' : 'Not Enrolled'}
-          </label>
-        </div>
+        {user.is_teacher === false ? (
+          <div>
+            <label htmlFor="enrollmentCheckbox">
+              <input
+                type="checkbox"
+                id="enrollmentCheckbox"
+                checked={enrolled}
+                onChange={toggleEnrollment}
+              />
+              {enrolled ? 'Ennrolled' : 'Not Enrolled'}
+            </label>
+          </div>
+        ) : ('')}
       </Card>
     </>
   );

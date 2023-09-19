@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import { Form, Button } from 'react-bootstrap';
 import moment from 'moment';
 import Head from 'next/head';
 import { getSingleUser } from '../../utils/data/userData';
 import { createAssignment, getAssignmentsByStudentId } from '../../utils/data/assignmentData';
 import AssignmentCard from '../../components/assignment/AssignmentCard';
-import assignmentIcon from '../../src/assets/images/assignment-icon.png';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function StudentAssignments() {
@@ -69,12 +67,11 @@ export default function StudentAssignments() {
       <Head>
         <title>{student.first_name}&apos;s Assignments</title>
       </Head>
-      <div className="min-h-screen p-4 flex flex-col justify-center items-center">
-        <h1 className="text-4xl p-4 font-semibold mb-4 text-center text-gray-800 bevan">{student.first_name}&apos;s Assignments</h1>
+      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
+        <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">{student.first_name}&apos;s Assignments</h1>
         {user.is_teacher === true && (
-        <Form onSubmit={handleSubmit} className="text-center mb-4">
-          <Button onClick={handleClick}>
-            <Image src={assignmentIcon} alt="assignment icon" />
+        <Form onSubmit={handleSubmit} className="text-center m-4">
+          <Button onClick={handleClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">New Assignment
           </Button>
         </Form>
         )}

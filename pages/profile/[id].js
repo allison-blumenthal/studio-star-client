@@ -1,16 +1,9 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function ProfileDetails() {
   const { user } = useAuth();
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/studios');
-  };
 
   return (
     <>
@@ -43,7 +36,6 @@ export default function ProfileDetails() {
                 <h3 className="coustard ml-2 text-xl">{user.guardian_names}</h3>
               </>
             ) : ('')}
-            <Button onClick={handleClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">View Teachers</Button>
           </div>
           <div className="max-w-1/2 relative flex justify-end pr-3 pt-2">
             <div className="w-36 h-36 rounded-full overflow-hidden">

@@ -8,6 +8,7 @@ import teacher from '../src/assets/images/teacher-icon.png';
 import assignment from '../src/assets/images/assignment-icon.png';
 import profile from '../src/assets/images/profile-icon.png';
 import { getStudioByTeacher } from '../utils/data/studioData';
+import teachers from '../src/assets/images/music-teachers-icon.png';
 
 export default function NavBar() {
   const [teacherStudio, setTeacherStudio] = useState({});
@@ -39,20 +40,26 @@ export default function NavBar() {
             {teacherStudio ? (
               <button type="button" className="pt-1">
                 <Link passHref href={`/studios/${teacherStudio.id}`}>
-                  <Image src={teacher} alt="teacher icon" />
+                  <Image src={teacher} alt="teacher icon" width={50} height={50} />
                 </Link>
               </button>
             ) : (
               <button type="button">
                 <Link passHref href={`/students/${user.id}`}>
-                  <Image src={assignment} alt="assignment icon" />
+                  <Image src={assignment} alt="assignment icon" width={40} height={40} />
                 </Link>
               </button>
             )}
 
-            <button type="button">
+            <button type="button" className="">
+              <Link passHref href="/studios">
+                <Image src={teachers} alt="music teachers icon" width={50} height={50} />
+              </Link>
+            </button>
+
+            <button type="button" className="">
               <Link passHref href={`/profile/${user.id}`}>
-                <Image src={profile} alt="profile icon" />
+                <Image src={profile} alt="profile icon" width={40} height={40} />
               </Link>
             </button>
 
