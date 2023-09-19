@@ -23,7 +23,6 @@ function StudiosPage() {
         {studios.map((studio) => (
           <section
             key={`studio--${studio.id}`}
-            className="bg-white rounded-lg shadow-lg p-4"
           >
             <StudioCard studioObj={studio} onUpdate={getAllStudios} enrolled={studio.enrolled} />
             <br />
