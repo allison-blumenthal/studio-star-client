@@ -27,7 +27,7 @@ export default function NavBar() {
       <div className="mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
 
-          <div className="h-16 w-16 md:h-16 md:w-16 lg:h-20 lg:w-20">
+          <div className="h-10 w-40 md:h-14 md:w-56 lg:h-16 lg:w-64">
             <Link passHref href="/">
               <button type="button">
                 <Logo />
@@ -37,7 +37,7 @@ export default function NavBar() {
 
           <div className="flex space-x-4 items-center">
             {teacherStudio ? (
-              <button type="button">
+              <button type="button" className="pt-1">
                 <Link passHref href={`/studios/${teacherStudio.id}`}>
                   <Image src={teacher} alt="teacher icon" />
                 </Link>
@@ -59,7 +59,7 @@ export default function NavBar() {
             <button
               type="button"
               onClick={signOut}
-              className="bg-black hover:bg-gray-700 text-white py-2 px-4 rounded"
+              className="bg-black hover:bg-gray-700 text-white py-3 px-3 md:py-2 lg:py-2  rounded transition duration-200 ease-in-out text-xs md:text-lg lg:text-xl coustard"
             >
               Log Out
             </button>
