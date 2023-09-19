@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { signOut } from '../utils/auth';
 import Logo from './logo/Logo';
 import { useAuth } from '../utils/context/authContext';
-import teacher from '../src/assets/images/teacher-icon.png';
+import students from '../src/assets/images/students-icon.png';
 import assignment from '../src/assets/images/assignment-icon.png';
 import profile from '../src/assets/images/profile-icon.png';
 import { getStudioByTeacher } from '../utils/data/studioData';
@@ -40,7 +40,7 @@ export default function NavBar() {
             {teacherStudio ? (
               <button type="button" className="pt-1">
                 <Link passHref href={`/studios/${teacherStudio.id}`}>
-                  <Image src={teacher} alt="teacher icon" width={50} height={50} />
+                  <Image src={students} alt="students icon" width={40} height={40} />
                 </Link>
               </button>
             ) : (

@@ -12,6 +12,7 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
 
   return (
     <div className="mx-4 md:max-w-sm lg:max-w-md">
+      <h3 className="text-blue-800 text-center text-lg bevan p-2">{formattedDate}</h3>
       <div className="flex items-center justify-center">
         <Link href={`/assignments/${assignmentObj.id}`} passHref>
           <div className="relative group">
@@ -24,10 +25,6 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
             />
           </div>
         </Link>
-      </div>
-      <div className="bg-white rounded-lg shadow-lg p-4 mt-4">
-        <h5 className="text-xl font-semibold mb-2">Assignment</h5>
-        <p className="text-gray-700">Date: {formattedDate}</p>
       </div>
     </div>
   );

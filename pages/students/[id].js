@@ -75,7 +75,7 @@ export default function StudentAssignments() {
           </Button>
         </Form>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="p-4 md:p-6 mt-4 gap-4 flex flex-wrap justify-center">
           {assignments.map((assignment) => (
             <section
               key={`assignment--${assignment.id}`}
