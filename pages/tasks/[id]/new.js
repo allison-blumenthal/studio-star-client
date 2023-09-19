@@ -9,7 +9,7 @@ export default function NewSticker() {
         <title>New Sticker</title>
       </Head>
       <div>
-        <h2>Choose a Sticker</h2>
+        <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">Choose a Sticker</h1>
         <TaskStickerForm />
       </div>
     </>

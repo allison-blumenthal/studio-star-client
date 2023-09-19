@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import 'tailwindcss/tailwind.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 import { AuthProvider } from '../utils/context/authContext';
 import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector';

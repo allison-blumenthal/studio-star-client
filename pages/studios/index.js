@@ -17,8 +17,8 @@ function StudiosPage() {
   }, [user]);
 
   return (
-    <div className="min-h-screen p-4">
-      <h1 className="text-4xl p-4 font-semibold mb-4 text-center text-gray-800">Studios</h1>
+    <div className="min-h-screen p-4 flex flex-col justify-start items-center">
+      <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">Studios</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {studios.map((studio) => (
           <section
