@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import moment from 'moment';
-import { Button } from 'react-bootstrap';
 import Image from 'next/image';
 import { deleteAssignment, getSingleAssignment } from '../../utils/data/assignmentData';
 import { getTasksByAssignmentId } from '../../utils/data/taskData';
@@ -59,18 +58,18 @@ export default function AssignmentDetails() {
     <div className="min-h-screen flex flex-col justify-start items-center">
       <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">{formattedDate}</h1>
       {user.is_teacher === true ? (
-        <div className="">
+        <div>
           <div className="space-x-2 text-center">
-            <Button onClick={handleEditClick}>
+            <button onClick={handleEditClick} type="button">
               <Image src={editIcon} alt="edit icon" width={40} height={40} />
-            </Button>
-            <Button onClick={deleteThisAssignment}>
+            </button>
+            <button onClick={deleteThisAssignment} type="button">
               <Image src={deleteIcon} alt="delete icon" width={40} height={40} />
-            </Button>
+            </button>
           </div>
           <div className="p-4">
-            <Button onClick={handleTaskClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">New Task
-            </Button>
+            <button onClick={handleTaskClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4" type="button">New Task
+            </button>
           </div>
         </div>
       ) : ('')}

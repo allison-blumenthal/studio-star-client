@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap';
 import Image from 'next/image';
 import deleteIcon from '../../src/assets/images/delete-icon.png';
 import { deleteTaskSticker } from '../../utils/data/taskStickerData';
@@ -16,20 +15,16 @@ function TaskStickerCard({ taskStickerObj, onUpdate }) {
   const emoji = String.fromCodePoint(parseInt(taskStickerObj.sticker_id.unicode.substr(2), 16));
 
   return (
-    <>
-      <Card className="text-center task-sticker-card">
-        <Card.Body>
-          <h1 style={{ fontSize: '150px' }}>
-            {emoji}
-          </h1>
-        </Card.Body>
-        <div className="btn-container">
-          <Button onClick={deleteThisTaskSticker}>
-            <Image src={deleteIcon} alt="delete icon" />
-          </Button>
-        </div>
-      </Card>
-    </>
+    <div className="bg-blue-100 rounded-lg shadow-md p-4 max-w-sm">
+      <div className="text-center">
+        <h1 className="text-9xl mb-4">{emoji}</h1>
+      </div>
+      <div className="flex justify-center">
+        <button onClick={deleteThisTaskSticker} className="text-white font-bold pt-2 pb-1 px-4 rounded" type="button">
+          <Image src={deleteIcon} alt="delete icon" width={20} height={20} />
+        </button>
+      </div>
+    </div>
   );
 }
 
