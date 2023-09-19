@@ -10,7 +10,6 @@ import editIcon from '../../src/assets/images/edit-icon.png';
 import deleteIcon from '../../src/assets/images/delete-icon.png';
 import { getUserByAssignmentId } from '../../utils/data/userData';
 import { useAuth } from '../../utils/context/authContext';
-import taskIcon from '../../src/assets/images/checked-checkbox-icon.png';
 
 export default function AssignmentDetails() {
   const [assignment, setAssignment] = useState({});
@@ -57,28 +56,32 @@ export default function AssignmentDetails() {
   const formattedDate = moment(assignment.date).format('MM/DD/YYYY');
 
   return (
-    <div>
-      <h1>{formattedDate} Assignment</h1>
+    <div className="min-h-screen flex flex-col justify-start items-center">
+      <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">{formattedDate}</h1>
       {user.is_teacher === true ? (
-        <>
-          <Button onClick={handleEditClick}>
-            <Image src={editIcon} alt="edit icon" />
-          </Button>
-          <Button onClick={deleteThisAssignment}>
-            <Image src={deleteIcon} alt="delete icon" />
-          </Button>
-          <Button onClick={handleTaskClick}>
-            <Image src={taskIcon} alt="task icon" />
-          </Button>
-        </>
+        <div className="">
+          <div className="space-x-2 text-center">
+            <Button onClick={handleEditClick}>
+              <Image src={editIcon} alt="edit icon" width={40} height={40} />
+            </Button>
+            <Button onClick={deleteThisAssignment}>
+              <Image src={deleteIcon} alt="delete icon" width={40} height={40} />
+            </Button>
+          </div>
+          <div className="p-4">
+            <Button onClick={handleTaskClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">New Task
+            </Button>
+          </div>
+        </div>
       ) : ('')}
-      {tasks.map((task) => (
-        <section key={`task--${task.id}`} className="task">
-          <TaskCard taskObj={task} onUpdate={getAssignmentTasks} />
-          <br />
-        </section>
-      ))}
-
+      <div className="p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 justify-center">
+        {tasks.map((task) => (
+          <section key={`task--${task.id}`} className="task">
+            <TaskCard taskObj={task} onUpdate={getAssignmentTasks} />
+            <br />
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
