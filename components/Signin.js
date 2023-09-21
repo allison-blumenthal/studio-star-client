@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import Head from 'next/head';
 import { signIn } from '../utils/auth';
 import LogoStar from './logo/LogoStar';
@@ -19,14 +18,14 @@ function Signin() {
         <div className="max-w-md">
           <LogoWords />
         </div>
-        <Button
+        <button
           type="button"
           size="lg"
           className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard"
           onClick={signIn}
         >
           Log In
-        </Button>
+        </button>
         <p className="text-center text-gray-600 mb-4 text-xl coustard">Click to log in or get started!</p>
       </div>
     </>

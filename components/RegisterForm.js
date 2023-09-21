@@ -57,7 +57,7 @@ function RegisterForm({ user, updateUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.isTeacher === true) {
-      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios/new'));
+      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/'));
     } else {
       registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios'));
     }

@@ -29,17 +29,21 @@ function StudioRoster() {
       <div className="min-h-screen flex flex-col justify-start items-center">
         <h1 className="text-4xl p-4 font-semibold m-4 text-center text-gray-800 bevan">My Studio Roster</h1>
         <div className="flex flex-wrap justify-center">
-          {studioStudents.map((studioStudent) => (
-            <section
-              key={`studioStudent--${studioStudent.id}`}
-              className="m-4"
-            >
-              <StudioStudentCard
-                studioStudentObj={studioStudent}
-                onUpdate={getAllStudioStudents}
-              />
-            </section>
-          ))}
+          {studioStudents.length > 0 ? (
+            studioStudents.map((studioStudent) => (
+              <section
+                key={`studioStudent--${studioStudent.id}`}
+                className="m-4"
+              >
+                <StudioStudentCard
+                  studioStudentObj={studioStudent}
+                  onUpdate={getAllStudioStudents}
+                />
+              </section>
+            ))
+          ) : (
+            <p className="coustard">No students currently enrolled.</p>
+          )}
         </div>
       </div>
     </>
