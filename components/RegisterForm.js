@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-datepicker/dist/react-datepicker.css';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment';
 import { useRouter } from 'next/router';
@@ -59,85 +57,158 @@ function RegisterForm({ user, updateUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.isTeacher === true) {
-      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios/new'));
+      registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/'));
     } else {
       registerUser(formData).then(() => updateUser(user.uid)).then(router.push('/studios'));
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-
-      <Form.Group className="mb-3" controlId="formBasicText">
-
-        <div>
-          <Form.Label>Select your account type:</Form.Label>
-          <Form.Check
-            inline
-            label="Teacher"
-            name="isTeacher"
-            type="radio"
-            // eslint-disable-next-line react/jsx-boolean-value
-            value={true}
-            checked={formData.isTeacher === true}
-            onChange={handleRadioChange}
-            required
-          />
-          <Form.Check
-            inline
-            label="Student"
-            name="isTeacher"
-            type="radio"
-            value={false}
-            checked={formData.isTeacher === false}
-            onChange={handleRadioChange}
-            required
-          />
+    <form onSubmit={handleSubmit} className="bg-white p-4 md:p-6 mb-4 rounded-lg shadow-lg coustard">
+      <div className="mb-3">
+        <h2 className="block font-medium">Select your account type:</h2>
+        <div className="flex space-x-4">
+          <div className="flex items-center">
+            <input
+              type="radio"
+              name="isTeacher"
+              value
+              checked={formData.isTeacher === true}
+              onChange={handleRadioChange}
+              required
+              className="mr-2"
+            />
+            <span>Teacher</span>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="radio"
+              name="isTeacher"
+              value={false}
+              checked={formData.isTeacher === false}
+              onChange={handleRadioChange}
+              required
+              className="mr-2"
+            />
+            <span>Student</span>
+          </div>
         </div>
-        <br />
+      </div>
 
-        <Form.Label>Instrument</Form.Label>
-        <Form.Control type="text" placeholder="Instrument" name="instrument" value={formData.instrument} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">Instrument:</h2>
+        <input
+          type="text"
+          placeholder="Instrument"
+          name="instrument"
+          value={formData.instrument}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-        <Form.Label>First Name</Form.Label>
-        <Form.Control type="text" placeholder="First Name" name="firstName" value={formData.firstName} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">First Name:</h2>
+        <input
+          type="text"
+          placeholder="First Name"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control type="text" placeholder="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">Last Name:</h2>
+        <input
+          type="text"
+          placeholder="Last Name"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-        <Form.Label>Pronouns</Form.Label>
-        <Form.Control type="text" placeholder="Pronouns" name="pronouns" value={formData.pronouns} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">Pronouns:</h2>
+        <input
+          type="text"
+          placeholder="Pronouns"
+          name="pronouns"
+          value={formData.pronouns}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-        {formData.isTeacher === false ? (
-          <>
-            <div>
-              <Form.Label>Select your date of birth:</Form.Label>
-              <DatePicker
-              // re-formats the date to the frontend format
-              // so it will display correctly in the date picker
-                selected={formData.birthdate ? moment(formData.birthdate).toDate() : null}
-                onChange={handleDateChange}
-                placeholderText="Birthdate"
-                name="birthdate"
-              />
-            </div>
+      {formData.isTeacher === false ? (
+        <>
+          <div className="mb-3">
+            <h2 className="block font-medium">Select your date of birth:</h2>
+            <DatePicker
+              selected={formData.birthdate ? moment(formData.birthdate).toDate() : null}
+              onChange={handleDateChange}
+              placeholderText="Birthdate"
+              name="birthdate"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+            />
+          </div>
 
-            <Form.Label>Gaurdian Names</Form.Label>
-            <Form.Control type="text" placeholder="Guardian Names" name="guardianNames" value={formData.guardianNames} onChange={handleChange} required />
-          </>
-        ) : ('')}
+          <div className="mb-3">
+            <h2 className="block font-medium">Guardian Names:</h2>
+            <input
+              type="text"
+              placeholder="Guardian Names"
+              name="guardianNames"
+              value={formData.guardianNames}
+              onChange={handleChange}
+              required
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+            />
+          </div>
+        </>
+      ) : null}
 
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">Email:</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-        <Form.Label>Profile Image URL</Form.Label>
-        <Form.Control type="url" placeholder="Profile Image URL" name="profileImageUrl" value={formData.profileImageUrl} onChange={handleChange} required />
+      <div className="mb-3">
+        <h2 className="block font-medium">Profile Image URL:</h2>
+        <input
+          type="url"
+          placeholder="Profile Image URL"
+          name="profileImageUrl"
+          value={formData.profileImageUrl}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-400"
+        />
+      </div>
 
-      </Form.Group>
-      <Button variant="primary" type="submit">
+      <button
+        type="submit"
+        className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mt-4 transition duration-200 ease-in-out coustard"
+      >
         Submit
-      </Button>
-    </Form>
+      </button>
+    </form>
+
   );
 }
 

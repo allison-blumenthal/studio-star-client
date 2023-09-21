@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Button } from 'react-bootstrap';
 import Image from 'next/image';
+import Head from 'next/head';
 import { deleteTask, getSingleTask } from '../../utils/data/taskData';
 import { useAuth } from '../../utils/context/authContext';
 import editIcon from '../../src/assets/images/edit-icon.png';
@@ -10,8 +10,8 @@ import stickerIcon from '../../src/assets/images/star-icon.png';
 import { getAssignmentByTaskId } from '../../utils/data/assignmentData';
 import { getTaskStickersByTaskId } from '../../utils/data/taskStickerData';
 import TaskStickerCard from '../../components/sticker/TaskStickerCard';
-import checkboxIcon from '../../src/assets/images/checked-checkbox-icon.png';
-import uncheckedBoxIcon from '../../src/assets/images/empty-checkbox-icon.png';
+import checkboxIcon from '../../src/assets/images/check-icon.png';
+import uncheckedBoxIcon from '../../src/assets/images/unchecked-icon.png';
 
 export default function TaskDetails() {
   const [task, setTask] = useState({});
@@ -56,37 +56,57 @@ export default function TaskDetails() {
   };
 
   return (
-    <div>
-      <h1>{task.title}</h1>
-      {user.is_teacher === true ? (
-        <>
-          <Button onClick={handleEditClick}>
-            <Image src={editIcon} alt="edit icon" />
-          </Button>
-          <Button onClick={deleteThisTask}>
-            <Image src={deleteIcon} alt="delete icon" />
-          </Button>
-        </>
-      ) : (
-        <Button onClick={handleStickerClick} onUpdate={getCurrentTask}>
-          <Image src={stickerIcon} alt="sticker icon" />
-        </Button>
-      )}
-      <h3>Description: {task.description}</h3>
-      <h3>Sticker Goal: {task.sticker_goal}</h3>
-      <h3>Stickers earned so far: {task.current_stickers}</h3>
-      {taskStickers.map((taskSticker) => (
-        <section key={`taskSticker--${taskSticker.id}`} className="taskSticker">
-          <TaskStickerCard taskStickerObj={taskSticker} onUpdate={() => { getTaskStickers(); getCurrentTask(); }} />
-          <br />
-        </section>
-      ))}
-      <h3>Completion Status:</h3>
-      {task.is_completed === true ? (
-        <Image src={checkboxIcon} alt="checkbox icon" />
-      ) : (
-        <Image src={uncheckedBoxIcon} alt="unchecked box icon" />
-      )}
-    </div>
+    <>
+      <Head>
+        <title>Task Details</title>
+      </Head>
+      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
+        <h1 className="text-4xl pt-4 font-semibold text-center text-gray-800 bevan">Task:</h1>
+        <h2 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan"> {task.title}</h2>
+        <div className="pb-4">
+          <div className="flex items-center">
+            <h3 className="bevan text-xl">Description: </h3>
+            <h2 className="coustard m-2 text-xl">{task.description}</h2>
+          </div>
+          <div className="flex items-center">
+            <h3 className="bevan text-xl">Sticker Goal: </h3>
+            <h2 className="coustard m-2 text-xl">{task.sticker_goal}</h2>
+          </div>
+          <div className="flex items-center">
+            <h3 className="bevan text-xl">Stickers earned so far: </h3>
+            <h2 className="coustard m-2 text-xl">{task.current_stickers}</h2>
+          </div>
+          <div className=" flex bevan">
+            <h3 className="text-xl">Completion Status:</h3>
+            <div className="ml-2">
+              <Image src={task.is_completed === true ? checkboxIcon : uncheckedBoxIcon} alt={task.is_completed === true ? 'checkbox icon' : 'unchecked box icon'} width={40} height={40} />
+            </div>
+          </div>
+        </div>
+        {user.is_teacher === true ? (
+          <div className="space-x-2 text-center">
+            <button onClick={handleEditClick} type="button">
+              <Image src={editIcon} alt="edit icon" width={40} height={40} />
+            </button>
+            <button onClick={deleteThisTask} type="button">
+              <Image src={deleteIcon} alt="delete icon" width={40} height={40} />
+            </button>
+          </div>
+        ) : (
+          <button onClick={handleStickerClick} className="bg-yellow-300 hover:bg-yellow-200 text-white font-bold py-2 px-3 rounded shadow-md" type="button">
+            <h2 className="text-black coustard pb-1">Add A Sticker</h2>
+            <Image src={stickerIcon} alt="sticker icon" width={40} height={40} />
+          </button>
+        )}
+        <h1 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan">Current Stickers</h1>
+        <div className="mb-6 flex flex-wrap justify-center items-center gap-3">
+          {taskStickers.map((taskSticker) => (
+            <div key={`taskSticker--${taskSticker.id}`}>
+              <TaskStickerCard taskStickerObj={taskSticker} onUpdate={() => { getTaskStickers(); getCurrentTask(); }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

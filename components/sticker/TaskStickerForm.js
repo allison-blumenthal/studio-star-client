@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Form } from 'react-bootstrap';
 import { createTaskSticker } from '../../utils/data/taskStickerData';
 import StickerCard from './StickerCard';
 import { getStickers } from '../../utils/data/stickerData';
@@ -43,24 +42,28 @@ export default function TaskStickerForm() {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Choose a Sticker</Form.Label>
-          {stickers.map((sticker) => (
-            <Form.Check
-              key={`sticker--${sticker.id}`}
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
+      <div className="mb-6 flex flex-wrap justify-center items-center">
+        {stickers.map((sticker) => (
+          <label
+            key={`sticker--${sticker.id}`}
+            className="block mb-3 p-2 rounded-lg cursor-pointer hover:bg-blue-300"
+          >
+            <input
               type="radio"
-              label={<StickerCard stickerObj={sticker} onUpdate={getAllStickers} />}
               name="id"
-              id={`sticker--${sticker.id}`}
               value={sticker.id}
               onChange={handleChange}
+              className="sr-only"
             />
-          ))}
-        </Form.Group>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </Form>
-    </>
+            <StickerCard stickerObj={sticker} onUpdate={getAllStickers} />
+          </label>
+        ))}
+      </div>
+      <div className="flex justify-center">
+        <button type="submit" className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">Stick It
+        </button>
+      </div>
+    </form>
   );
 }

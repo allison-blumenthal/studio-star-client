@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import { Form, Button } from 'react-bootstrap';
 import moment from 'moment';
+import Head from 'next/head';
 import { getSingleUser } from '../../utils/data/userData';
 import { createAssignment, getAssignmentsByStudentId } from '../../utils/data/assignmentData';
 import AssignmentCard from '../../components/assignment/AssignmentCard';
-import assignmentIcon from '../../src/assets/images/assignment-icon.png';
 import { useAuth } from '../../utils/context/authContext';
 
 export default function StudentAssignments() {
@@ -54,7 +52,7 @@ export default function StudentAssignments() {
   }, [id]);
 
   const handleSubmit = () => {
-    createAssignment(formData).then((assignment) => router.push(`/assignments/${assignment.id}`));
+    createAssignment(formData).then(() => getStudentAssignments());
   };
 
   const handleClick = () => {
@@ -64,22 +62,31 @@ export default function StudentAssignments() {
   };
 
   return (
-    <div>
-      <h1>{student.first_name}&apos;s Assignments</h1>
-      {user.is_teacher === true
-        ? (
-          <Form onSubmit={handleSubmit}>
-            <Button onClick={handleClick}>
-              <Image src={assignmentIcon} alt="assignment icon" />
-            </Button>
-          </Form>
-        ) : ('')}
-      {assignments.map((assignment) => (
-        <section key={`assignment--${assignment.id}`} className="assignment">
-          <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
-          <br />
-        </section>
-      ))}
-    </div>
+    <>
+      <Head>
+        <title>{student.first_name}&apos;s Assignments</title>
+      </Head>
+      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
+        <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">{student.first_name}&apos;s Assignments</h1>
+        {user.is_teacher === true && (
+        <form onSubmit={handleSubmit} className="text-center m-4">
+          <button onClick={handleClick} className="bg-blue-700 hover:bg-blue-500 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4" type="button">New Assignment
+          </button>
+        </form>
+        )}
+        <div className="p-4 md:p-6 mt-4 gap-4 flex flex-wrap justify-center">
+          {assignments.map((assignment) => (
+            <section
+              key={`assignment--${assignment.id}`}
+              className="flex mb-3"
+            >
+              <div className="bg-gray-900 rounded-lg shadow-lg py-4">
+                <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

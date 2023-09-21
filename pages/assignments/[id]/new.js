@@ -8,8 +8,8 @@ export default function NewTask() {
       <Head>
         <title>New Task</title>
       </Head>
-      <div>
-        <h2>Add a Task</h2>
+      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
+        <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">Add A Task</h1>
         <TaskForm />
       </div>
     </>

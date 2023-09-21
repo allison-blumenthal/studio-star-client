@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createTask, updateTask } from '../../utils/data/taskData';
 
@@ -71,25 +70,64 @@ function TaskForm({ taskObj }) {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Title:</Form.Label>
-          <Form.Control name="title" required value={currentTask.title} onChange={handleChange} type="text" />
+    <div className="max-w-lg mx-auto coustard">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+            Title:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="title"
+            name="title"
+            required
+            type="text"
+            value={currentTask.title}
+            onChange={handleChange}
+          />
+        </div>
 
-          <Form.Label>Description:</Form.Label>
-          <Form.Control name="description" required value={currentTask.description} onChange={handleChange} type="textarea" />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+            Description:
+          </label>
+          <textarea
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="description"
+            name="description"
+            required
+            rows="4"
+            value={currentTask.description}
+            onChange={handleChange}
+          />
+        </div>
 
-          <Form.Label>Goal number of stickers: </Form.Label>
-          <Form.Control name="stickerGoal" required value={currentTask.stickerGoal} onChange={handleChange} type="number" />
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="stickerGoal">
+            Goal number of stickers:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="stickerGoal"
+            name="stickerGoal"
+            required
+            type="number"
+            value={currentTask.stickerGoal}
+            onChange={handleChange}
+          />
+        </div>
 
-        </Form.Group>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            {taskObj.id ? 'Update' : 'Create'} Task
+          </button>
+        </div>
+      </form>
+    </div>
 
-        <Button variant="primary" type="submit">
-          {taskObj.id ? 'Update' : 'Create'} Task
-        </Button>
-      </Form>
-    </>
   );
 }
 
