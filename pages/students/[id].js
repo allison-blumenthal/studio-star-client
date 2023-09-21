@@ -53,7 +53,7 @@ export default function StudentAssignments() {
   }, [id]);
 
   const handleSubmit = () => {
-    createAssignment(formData).then((assignment) => router.push(`/assignments/${assignment.id}`));
+    createAssignment(formData).then(() => getStudentAssignments());
   };
 
   const handleClick = () => {
@@ -71,7 +71,7 @@ export default function StudentAssignments() {
         <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">{student.first_name}&apos;s Assignments</h1>
         {user.is_teacher === true && (
         <Form onSubmit={handleSubmit} className="text-center m-4">
-          <Button onClick={handleClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">New Assignment
+          <Button onClick={handleClick} className="bg-blue-700 hover:bg-blue-500 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">New Assignment
           </Button>
         </Form>
         )}
@@ -81,7 +81,7 @@ export default function StudentAssignments() {
               key={`assignment--${assignment.id}`}
               className="flex mb-3"
             >
-              <div className="bg-white rounded-lg shadow-lg p-4">
+              <div className="bg-gray-900 rounded-lg shadow-lg py-4">
                 <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
               </div>
             </section>
