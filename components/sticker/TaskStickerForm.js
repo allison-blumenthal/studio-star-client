@@ -42,26 +42,30 @@ export default function TaskStickerForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
-      <div className="mb-6 flex flex-wrap justify-center items-center">
+    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto p-4">
+      <div className="flex flex-wrap justify-center items-center">
         {stickers.map((sticker) => (
-          <label
-            key={`sticker--${sticker.id}`}
-            className="block mb-3 p-2 rounded-lg cursor-pointer hover:bg-blue-300"
-          >
+          <div key={`sticker--${sticker.id}`} className="relative">
             <input
               type="radio"
               name="id"
+              id={`sticker--${sticker.id}`}
               value={sticker.id}
               onChange={handleChange}
-              className="sr-only"
+              className="sr-only peer"
             />
-            <StickerCard stickerObj={sticker} onUpdate={getAllStickers} />
-          </label>
+            <label
+              htmlFor={`sticker--${sticker.id}`}
+              className="block mb-3 p-2 rounded-lg cursor-pointer hover:bg-blue-300 peer-checked:bg-blue-400"
+            >
+
+              <StickerCard stickerObj={sticker} onUpdate={getAllStickers} />
+            </label>
+          </div>
         ))}
       </div>
       <div className="flex justify-center">
-        <button type="submit" className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">Stick It
+        <button type="submit" className="bg-blue-700 hover:bg-blue-900 text-white text-2xl rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4">Stick It
         </button>
       </div>
     </form>

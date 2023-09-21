@@ -43,10 +43,10 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
         </div>
       </div>
       <div className="pt-4 flex justify-between">
-        <button onClick={unenroll} type="button" className="bg-yellow-400 hover:bg-yellow-200  px-3 pb-1 pt-2.5 rounded">
+        <button onClick={unenroll} type="button" className="bg-yellow-400 hover:bg-yellow-500  px-3 pb-1 pt-2.5 rounded">
           <Image src={remove} alt="remove student icon" width={24} height={24} />
         </button>
-        <button onClick={handleClick} type="button" className="bg-blue-400 hover:bg-blue-300 text-white px-3 pb-1 pt-2 rounded">
+        <button onClick={handleClick} type="button" className="bg-blue-400 hover:bg-blue-500 text-white px-3 pb-1 pt-2 rounded">
           <Image src={assignment} alt="assignment icon" width={24} height={24} />
         </button>
       </div>

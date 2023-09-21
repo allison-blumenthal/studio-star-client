@@ -61,25 +61,27 @@ export default function TaskDetails() {
         <title>Task Details</title>
       </Head>
       <div className="min-h-screen p-4 flex flex-col justify-start items-center">
-        <h1 className="text-4xl pt-4 font-semibold text-center text-gray-800 bevan">Task:</h1>
-        <h2 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan"> {task.title}</h2>
-        <div className="pb-4">
-          <div className="flex items-center">
-            <h3 className="bevan text-xl">Description: </h3>
-            <h2 className="coustard m-2 text-xl">{task.description}</h2>
-          </div>
-          <div className="flex items-center">
-            <h3 className="bevan text-xl">Sticker Goal: </h3>
-            <h2 className="coustard m-2 text-xl">{task.sticker_goal}</h2>
-          </div>
-          <div className="flex items-center">
-            <h3 className="bevan text-xl">Stickers earned so far: </h3>
-            <h2 className="coustard m-2 text-xl">{task.current_stickers}</h2>
-          </div>
-          <div className=" flex bevan">
-            <h3 className="text-xl">Completion Status:</h3>
-            <div className="ml-2">
-              <Image src={task.is_completed === true ? checkboxIcon : uncheckedBoxIcon} alt={task.is_completed === true ? 'checkbox icon' : 'unchecked box icon'} width={40} height={40} />
+        <h1 className="text-4xl pt-4 font-semibold text-center text-gray-800 bevan">Task</h1>
+        <div className="bg-gray-100 m-4 rounded px-4 shadow-lg">
+          <h2 className="text-2xl p-4 text-center text-gray-800 bevan"> {task.title}</h2>
+          <div className="pb-4">
+            <div className="flex flex-wrap items-center">
+              <h3 className="bevan text-xl">Description: </h3>
+              <h2 className="coustard m-2 text-xl">{task.description}</h2>
+            </div>
+            <div className="flex items-center">
+              <h3 className="bevan text-xl">Sticker Goal: </h3>
+              <h2 className="coustard m-2 text-xl">{task.sticker_goal}</h2>
+            </div>
+            <div className="flex items-center">
+              <h3 className="bevan text-xl">Stickers earned so far: </h3>
+              <h2 className="coustard m-2 text-xl">{task.current_stickers}</h2>
+            </div>
+            <div className=" flex bevan">
+              <h3 className="text-xl">Completion Status:</h3>
+              <div className="ml-2">
+                <Image src={task.is_completed === true ? checkboxIcon : uncheckedBoxIcon} alt={task.is_completed === true ? 'checkbox icon' : 'unchecked box icon'} width={40} height={40} />
+              </div>
             </div>
           </div>
         </div>
@@ -93,9 +95,10 @@ export default function TaskDetails() {
             </button>
           </div>
         ) : (
-          <button onClick={handleStickerClick} className="bg-yellow-300 hover:bg-yellow-200 text-white font-bold py-2 px-3 rounded shadow-md" type="button">
-            <h2 className="text-black coustard pb-1">Add A Sticker</h2>
-            <Image src={stickerIcon} alt="sticker icon" width={40} height={40} />
+          <button onClick={handleStickerClick} className="bg-yellow-400 hover:bg-yellow-200 text-white text-3xl font-bold py-2 px-3 rounded shadow-md" type="button">
+            <h2 className="text-black coustard pb-1">Add</h2>
+            <h2 className="text-black coustard pb-1">Sticker</h2>
+            <Image src={stickerIcon} alt="sticker icon" width={60} height={60} />
           </button>
         )}
         <h1 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan">Current Stickers</h1>

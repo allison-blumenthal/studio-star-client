@@ -15,12 +15,12 @@ function TaskStickerCard({ taskStickerObj, onUpdate }) {
   const emoji = String.fromCodePoint(parseInt(taskStickerObj.sticker_id.unicode.substr(2), 16));
 
   return (
-    <div className="bg-blue-100 rounded-lg shadow-md p-4 max-w-sm">
+    <div className="bg-gray-100 rounded-lg shadow-md p-4 max-w-sm">
       <div className="text-center">
         <h1 className="text-9xl mb-4">{emoji}</h1>
       </div>
       <div className="flex justify-center">
-        <button onClick={deleteThisTaskSticker} className="text-white font-bold pt-2 pb-1 px-4 rounded" type="button">
+        <button onClick={deleteThisTaskSticker} className="pt-2 pb-1 px-2 rounded bg-gray-300" type="button">
           <Image src={deleteIcon} alt="delete icon" width={20} height={20} />
         </button>
       </div>

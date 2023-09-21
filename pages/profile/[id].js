@@ -26,7 +26,7 @@ export default function ProfileDetails() {
               <h2 className="bevan pr-1">Instrument:</h2>
               <h3 className="coustard ml-2 text-xl">{user.instrument}</h3>
             </div>
-            <div className="flex items-center">
+            <div className="flex flex-wrap items-center">
               <h2 className="bevan pr-1">Email address:</h2>
               <h3 className="coustard ml-2 text-xl">{user.email}</h3>
             </div>

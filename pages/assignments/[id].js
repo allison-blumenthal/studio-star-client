@@ -80,11 +80,10 @@ export default function AssignmentDetails() {
         ) : ('')}
 
         {tasks.length > 0 ? (
-          <div className="p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 justify-center">
+          <div className="p-6 bg-white rounded-lg shadow-lg justify-center">
             {tasks.map((task) => (
               <section key={`task--${task.id}`} className="task">
                 <TaskCard taskObj={task} onUpdate={getAssignmentTasks} />
-                <br />
               </section>
             ))}
           </div>
