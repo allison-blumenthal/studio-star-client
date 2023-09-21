@@ -10,15 +10,36 @@ function Home() {
         <title>Home</title>
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
-        <div className="max-w-lg p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 mx-4">
+        <div className="max-w-3xl p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 mx-4">
           <h1 className="text-3xl font-semibold mb-4 text-center bevan">
             Welcome, {user.first_name}!
           </h1>
-          <h2 className="text-lg text-gray-600 coustard">
+          <div className="text-xl text-gray-600 coustard text-center">
             {user.is_teacher === true
-              ? 'Thank you for using our platform for all your studio needs. Use the navbar to access your roster and profile.'
-              : 'Thank you for using our platform to access all your music lesson materials.'}
-          </h2>
+              ? (
+                <div>
+                  <h2>Thanks for using Studio Star for all your music studio needs.</h2>
+                  <h2>Use the navbar icons to access your student roster, see all teachers, and view your profile.</h2>
+                  <br />
+                  <h1 className="bevan text-blue-900">Features coming soon:</h1>
+                  <h2>Post updates for your entire studio, message back and forth with students on assignments, and access a wide variety of unique and searchable stickers.</h2>
+                  <br />
+                  <h1 className="bevan text-2xl">Happy teaching!</h1>
+                </div>
+              )
+              : (
+                <div>
+                  <h2>Thanks for using Studio Star for all your music lesson materials.</h2>
+                  <h2>Use the navbar icons to access your assignment page, see all teachers, and view your profile.
+                  </h2>
+                  <br />
+                  <h1 className="bevan text-blue-900">Features coming soon:</h1>
+                  <h2>View teacher updates for the entire studio, message back and forth with teachers on assignments, and access a wide variety of unique and searchable stickers.</h2>
+                  <br />
+                  <h1 className="bevan text-2xl">Happy practicing!</h1>
+                </div>
+              )}
+          </div>
         </div>
       </div>
     </>
