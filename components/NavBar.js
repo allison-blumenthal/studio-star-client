@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';
 import Logo from './logo/Logo';
 import { useAuth } from '../utils/context/authContext';
@@ -13,6 +14,7 @@ import teachers from '../src/assets/images/music-teachers-icon.png';
 export default function NavBar() {
   const [teacherStudio, setTeacherStudio] = useState({});
   const { user } = useAuth();
+  const router = useRouter();
 
   const getTeacherStudio = () => {
     getStudioByTeacher(user.uid, user.id).then((studio) => setTeacherStudio(studio[0]));
@@ -22,6 +24,11 @@ export default function NavBar() {
     getTeacherStudio();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  const signOutSendHome = () => {
+    signOut();
+    router.push('/');
+  };
 
   return (
     <nav className="bg-blue-400">
@@ -65,7 +72,7 @@ export default function NavBar() {
 
             <button
               type="button"
-              onClick={signOut}
+              onClick={signOutSendHome}
               className="bg-black hover:bg-gray-700 text-white py-3 px-3 md:py-2 lg:py-2  rounded transition duration-200 ease-in-out text-xs md:text-lg lg:text-xl coustard"
             >
               Log Out
