@@ -28,7 +28,7 @@ function StudioRoster() {
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
         <h1 className="text-4xl p-4 font-semibold m-4 text-center text-gray-800 bevan">My Studio Roster</h1>
-        <div className="p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center">
           {studioStudents.map((studioStudent) => (
             <section
               key={`studioStudent--${studioStudent.id}`}
