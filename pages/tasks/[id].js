@@ -56,7 +56,28 @@ export default function TaskDetails() {
 
   return (
     <div className="min-h-screen p-4 flex flex-col justify-start items-center">
-      <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">{task.title}</h1>
+      <h1 className="text-4xl pt-4 font-semibold text-center text-gray-800 bevan">Task:</h1>
+      <h2 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan"> {task.title}</h2>
+      <div className="pb-4">
+        <div className="flex items-center">
+          <h3 className="bevan text-xl">Description: </h3>
+          <h2 className="coustard m-2 text-xl">{task.description}</h2>
+        </div>
+        <div className="flex items-center">
+          <h3 className="bevan text-xl">Sticker Goal: </h3>
+          <h2 className="coustard m-2 text-xl">{task.sticker_goal}</h2>
+        </div>
+        <div className="flex items-center">
+          <h3 className="bevan text-xl">Stickers earned so far: </h3>
+          <h2 className="coustard m-2 text-xl">{task.current_stickers}</h2>
+        </div>
+        <div className=" flex bevan">
+          <h3 className="text-xl">Completion Status:</h3>
+          <div className="ml-2">
+            <Image src={task.is_completed === true ? checkboxIcon : uncheckedBoxIcon} alt={task.is_completed === true ? 'checkbox icon' : 'unchecked box icon'} width={40} height={40} />
+          </div>
+        </div>
+      </div>
       {user.is_teacher === true ? (
         <div className="space-x-2 text-center">
           <button onClick={handleEditClick} type="button">
@@ -67,27 +88,18 @@ export default function TaskDetails() {
           </button>
         </div>
       ) : (
-        <button onClick={handleStickerClick} className="bg-yellow-300 hover:bg-yellow-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <button onClick={handleStickerClick} className="bg-yellow-300 hover:bg-yellow-200 text-white font-bold py-2 px-3 rounded shadow-md" type="button">
+          <h2 className="text-black coustard pb-1">Add A Sticker</h2>
           <Image src={stickerIcon} alt="sticker icon" width={40} height={40} />
         </button>
       )}
-      <div className="p-4 coustard">
-        <h3 className="text-lg mb-2">Description: {task.description}</h3>
-        <h3 className="text-lg mb-2">Sticker Goal: {task.sticker_goal}</h3>
-        <h3 className="text-lg mb-2">Stickers earned so far: {task.current_stickers}</h3>
-      </div>
-      <div className="flex space-x-4">
+      <h1 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan">Current Stickers</h1>
+      <div className="mb-6 flex flex-wrap justify-center items-center gap-3">
         {taskStickers.map((taskSticker) => (
           <div key={`taskSticker--${taskSticker.id}`}>
             <TaskStickerCard taskStickerObj={taskSticker} onUpdate={() => { getTaskStickers(); getCurrentTask(); }} />
           </div>
         ))}
-      </div>
-      <div className="flex bevan p-4">
-        <h3 className="text-lg mt-4">Completion Status:</h3>
-        <div className="pl-2 m-2">
-          <Image src={task.is_completed === true ? checkboxIcon : uncheckedBoxIcon} alt={task.is_completed === true ? 'checkbox icon' : 'unchecked box icon'} width={40} height={40} />
-        </div>
       </div>
     </div>
   );
