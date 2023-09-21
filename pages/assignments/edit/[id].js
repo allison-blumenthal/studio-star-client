@@ -4,7 +4,6 @@ import DatePicker from 'react-datepicker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-import { Form, Button } from 'react-bootstrap';
 import Head from 'next/head';
 import { getSingleAssignment, updateAssignment } from '../../../utils/data/assignmentData';
 
@@ -46,20 +45,30 @@ export default function EditAssignment() {
       <Head>
         <title>Edit Assignment</title>
       </Head>
-      <Form onSubmit={handleSubmit}>
-        <Form.Label>Edit assignment date:</Form.Label>
-        <DatePicker
-          // re-formats the date to the frontend format
-          // so it will display correctly in the date picker
-          selected={moment(editAssignment.date).toDate()}
-          onChange={handleDateChange}
-          placeholderText="Assignment Date"
-          name="date"
-        />
-        <Button variant="primary" type="submit">
-          Update Assignment
-        </Button>
-      </Form>
+      <div className="min-h-screen flex flex-col justify-start items-center">
+        <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">Edit Assignment Date</h1>
+        <form onSubmit={handleSubmit} className="mt-4">
+          <div>
+            <DatePicker
+              // re-formats the date to the frontend format
+              // so it will display correctly in the date picker
+              selected={moment(editAssignment.date).toDate()}
+              onChange={handleDateChange}
+              placeholderText="Assignment Date"
+              name="date"
+              className="block w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-400"
+            />
+          </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mt-4 transition duration-200 ease-in-out coustard"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
 
     </>
   );
