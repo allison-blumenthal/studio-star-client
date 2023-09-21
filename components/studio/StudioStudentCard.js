@@ -26,26 +26,28 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
   // };
 
   return (
-    <div className="bg-gray-700 rounded-lg shadow-lg md:p-6 mb-6 max-w-lg">
+    <div className="bg-gray-100 rounded-lg shadow-lg p-6 mb-6 max-w-lg">
       <div className="flex">
         {/* <button onClick={handleProfile} type="button"> */}
-        <h2 className="text-xl text-gray-200 bevan mb-2">
+        <h2 className="text-xl text-gray-900 bevan mb-2">
           {studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}
         </h2>
         {/* </button> */}
-        <h3 className="text-gray-200 ml-auto coustard text-lg">{studioStudentObj.student_id.instrument}</h3>
+        <h3 className="text-gray-900 ml-auto coustard text-lg">{studioStudentObj.student_id.instrument}</h3>
       </div>
-      <h3 className="text-gray-200 mb-2 coustard italic">{studioStudentObj.student_id.pronouns}</h3>
+      <h3 className="text-gray-900 mb-2 coustard italic">{studioStudentObj.student_id.pronouns}</h3>
       <div className="text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={studioStudentObj.student_id.profile_image_url} alt="student" className="rounded-2xl mt-4 inline-block" />
+        <div className="w-72 h-72 rounded-full overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={studioStudentObj.student_id.profile_image_url} alt="student" className="object-cover w-full h-full max-w-full max-h-full" />
+        </div>
       </div>
       <div className="pt-4 flex justify-between">
         <button onClick={unenroll} type="button" className="bg-yellow-400 hover:bg-yellow-200  px-3 pb-1 pt-2.5 rounded">
-          <Image src={remove} alt="remove student icon" width={20} height={20} />
+          <Image src={remove} alt="remove student icon" width={24} height={24} />
         </button>
         <button onClick={handleClick} type="button" className="bg-blue-400 hover:bg-blue-300 text-white px-3 pb-1 pt-2 rounded">
-          <Image src={assignment} alt="assignment icon" width={20} height={20} />
+          <Image src={assignment} alt="assignment icon" width={24} height={24} />
         </button>
       </div>
     </div>
