@@ -70,11 +70,11 @@ export default function StudentAssignments() {
         <h1 className="text-4xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded m-4 p-3 shadow-lg">{student.first_name}&apos;s Assignments</h1>
         {user.is_teacher === true && (
         <form onSubmit={handleSubmit} className="text-center">
-          <button onClick={handleClick} className="bg-blue-700 hover:bg-blue-500 text-white rounded-lg py-3 px-6 transition duration-200 ease-in-out coustard" type="button">New Assignment
+          <button onClick={handleClick} className="bg-blue-600 hover:bg-blue-800 text-white rounded-lg py-3 px-6 transition duration-200 ease-in-out coustard" type="button">New Assignment
           </button>
         </form>
         )}
-        <div className="p-4 md:p-6 mt-4 gap-4 flex flex-wrap justify-center">
+        <div className="p-4 md:p-6 gap-2 flex flex-wrap justify-center">
           {assignments.map((assignment) => (
             <section
               key={`assignment--${assignment.id}`}

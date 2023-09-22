@@ -63,8 +63,8 @@ export default function AssignmentDetails() {
       <div className="min-h-screen flex flex-col justify-start items-center">
         <h1 className="text-4xl font-semibold m-4 text-center text-gray-800 bevan bg-gray-100 p-3 rounded shadow-lg">{formattedDate}</h1>
         {user.is_teacher === true ? (
-          <div>
-            <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg py-3">
+          <div className="flex flex-col justify-start items-center">
+            <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg p-3">
               <button onClick={handleEditClick} type="button">
                 <Image src={editIcon} alt="edit icon" width={40} height={40} />
               </button>

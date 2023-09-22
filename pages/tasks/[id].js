@@ -38,6 +38,7 @@ export default function TaskDetails() {
     getCurrentTask();
     getTaskAssignment();
     getTaskStickers();
+    console.warn(user);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -62,7 +63,17 @@ export default function TaskDetails() {
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
         <h1 className="text-4xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded shadow-lg p-3 m-4">Task</h1>
-        <div className="bg-gray-100 mb-4 rounded px-4 shadow-lg">
+        {user.is_teacher === true ? (
+          <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg p-3 mb-4">
+            <button onClick={handleEditClick} type="button">
+              <Image src={editIcon} alt="edit icon" width={40} height={40} />
+            </button>
+            <button onClick={deleteThisTask} type="button">
+              <Image src={deleteIcon} alt="delete icon" width={40} height={40} />
+            </button>
+          </div>
+        ) : ('')}
+        <div className="bg-gray-100 rounded px-4 shadow-lg">
           <h2 className="text-2xl p-4 text-center text-gray-800 bevan"> {task.title}</h2>
           <div className="pb-4">
             <div className="flex flex-wrap items-center">
@@ -85,23 +96,14 @@ export default function TaskDetails() {
             </div>
           </div>
         </div>
-        {user.is_teacher === true ? (
-          <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg p-3">
-            <button onClick={handleEditClick} type="button">
-              <Image src={editIcon} alt="edit icon" width={40} height={40} />
-            </button>
-            <button onClick={deleteThisTask} type="button">
-              <Image src={deleteIcon} alt="delete icon" width={40} height={40} />
-            </button>
-          </div>
-        ) : (
-          <button onClick={handleStickerClick} className="bg-yellow-400 hover:bg-yellow-200 text-white text-3xl font-bold py-2 px-3 rounded shadow-md" type="button">
+        {user.is_teacher === false ? (
+          <button onClick={handleStickerClick} className="bg-yellow-400 hover:bg-yellow-200 text-white text-3xl font-bold py-2 px-3 rounded shadow-md mt-4" type="button">
             <h2 className="text-black coustard pb-1">Add</h2>
             <h2 className="text-black coustard pb-1">Sticker</h2>
             <Image src={stickerIcon} alt="sticker icon" width={60} height={60} />
           </button>
-        )}
-        <h1 className="text-2xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded -shadow-lg m-4 p-3">Current Stickers</h1>
+        ) : ('')}
+        <h1 className="text-2xl font-semibold text-center text-blue-700 bevan bg-gray-100 rounded -shadow-lg m-4 p-3">Current Stickers</h1>
         <div className="mb-6 flex flex-wrap justify-center items-center gap-3">
           {taskStickers.map((taskSticker) => (
             <div key={`taskSticker--${taskSticker.id}`}>

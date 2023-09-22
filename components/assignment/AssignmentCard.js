@@ -11,8 +11,8 @@ function AssignmentCard({ assignmentObj, onUpdate }) {
   const formattedDate = moment(assignmentObj.date).format('MM/DD/YYYY');
 
   return (
-    <div className="mx-4 md:max-w-sm lg:max-w-md rounded bg-gray-100 shadow-lg p-3 transition-opacity duration-100 ease-in-out hover:bg-white">
-      <h3 className="text-blue-500 text-center text-lg bevan p-2">{formattedDate}</h3>
+    <div className="mx-4 md:max-w-sm lg:max-w-md rounded bg-gray-100 shadow-lg p-3 transition-opacity duration-100 ease-in-out hover:bg-gray-300">
+      <h3 className="text-blue-700 text-center text-lg bevan p-2">{formattedDate}</h3>
       <div className="flex items-center justify-center">
         <Link href={`/assignments/${assignmentObj.id}`} passHref>
           <div className="relative group">
