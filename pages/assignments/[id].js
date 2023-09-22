@@ -88,7 +88,7 @@ export default function AssignmentDetails() {
             ))}
           </div>
         ) : (
-          <p className="coustard bg-gray-100 rounded p-3 shadow-lg">No tasks currently on this assignment.</p>
+          <p className="coustard bg-gray-100 rounded p-3 shadow-lg">No tasks have been created yet.</p>
         )}
       </div>
     </>

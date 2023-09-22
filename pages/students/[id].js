@@ -74,18 +74,22 @@ export default function StudentAssignments() {
           </button>
         </form>
         )}
-        <div className="p-4 md:p-6 gap-2 flex flex-wrap justify-center">
-          {assignments.map((assignment) => (
-            <section
-              key={`assignment--${assignment.id}`}
-              className="flex mb-3"
-            >
-              <div>
-                <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
-              </div>
-            </section>
-          ))}
-        </div>
+        {assignments.length > 0 ? (
+          <div className="p-4 md:p-6 gap-2 flex flex-wrap justify-center">
+            {assignments.map((assignment) => (
+              <section
+                key={`assignment--${assignment.id}`}
+                className="flex mb-3"
+              >
+                <div>
+                  <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <p className="coustard bg-gray-100 rounded p-3 shadow-lg m-4">No assignments have been created yet.</p>
+        )}
       </div>
     </>
   );
