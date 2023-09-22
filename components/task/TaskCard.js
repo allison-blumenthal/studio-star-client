@@ -16,7 +16,7 @@ function TaskCard({ taskObj, onUpdate }) {
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div onClick={handleClick} role="button" tabIndex="0" className="bg-blue-400 p-4 md:p-6 mb-4 text-white text-2xl coustard rounded-lg shadow-lg flex justify-between items-center min-w-32 cursor-pointer hover:bg-blue-300 transition duration-100 ease-in-out">
+    <div onClick={handleClick} role="button" tabIndex="0" className="bg-blue-400 p-4 md:p-6 mb-4 text-white text-2xl coustard rounded-lg shadow-lg flex justify-between items-center min-w-32 cursor-pointer hover:bg-blue-500 transition duration-100 ease-in-out">
       <div className="flex-1">
         <div className="p-4">
           {taskObj.title}

@@ -66,26 +66,30 @@ export default function StudentAssignments() {
       <Head>
         <title>{student.first_name}&apos;s Assignments</title>
       </Head>
-      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
-        <h1 className="text-4xl p-4 font-semibold text-center text-gray-800 bevan">{student.first_name}&apos;s Assignments</h1>
+      <div className="min-h-screen flex flex-col justify-start items-center">
+        <h1 className="text-4xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded m-4 p-3 shadow-lg">{student.first_name}&apos;s Assignments</h1>
         {user.is_teacher === true && (
-        <form onSubmit={handleSubmit} className="text-center m-4">
-          <button onClick={handleClick} className="bg-blue-700 hover:bg-blue-500 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4" type="button">New Assignment
+        <form onSubmit={handleSubmit} className="text-center">
+          <button onClick={handleClick} className="bg-blue-600 hover:bg-blue-800 text-white rounded-lg py-3 px-6 transition duration-200 ease-in-out coustard" type="button">New Assignment
           </button>
         </form>
         )}
-        <div className="p-4 md:p-6 mt-4 gap-4 flex flex-wrap justify-center">
-          {assignments.map((assignment) => (
-            <section
-              key={`assignment--${assignment.id}`}
-              className="flex mb-3"
-            >
-              <div className="bg-gray-900 rounded-lg shadow-lg py-4">
-                <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
-              </div>
-            </section>
-          ))}
-        </div>
+        {assignments.length > 0 ? (
+          <div className="p-4 md:p-6 gap-2 flex flex-wrap justify-center">
+            {assignments.map((assignment) => (
+              <section
+                key={`assignment--${assignment.id}`}
+                className="flex mb-3"
+              >
+                <div>
+                  <AssignmentCard assignmentObj={assignment} onUpdate={getStudentAssignments} />
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <p className="coustard bg-gray-100 rounded p-3 shadow-lg m-4">No assignments have been created yet.</p>
+        )}
       </div>
     </>
   );

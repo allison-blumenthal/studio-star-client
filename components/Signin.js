@@ -21,7 +21,7 @@ function Signin() {
         <button
           type="button"
           size="lg"
-          className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard"
+          className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-2 transition duration-200 ease-in-out coustard"
           onClick={signIn}
         >
           Log In

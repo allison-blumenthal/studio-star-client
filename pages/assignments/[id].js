@@ -61,10 +61,10 @@ export default function AssignmentDetails() {
         <title>{formattedDate} Assignment</title>
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
-        <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">{formattedDate}</h1>
+        <h1 className="text-4xl font-semibold m-4 text-center text-gray-800 bevan bg-gray-100 p-3 rounded shadow-lg">{formattedDate}</h1>
         {user.is_teacher === true ? (
-          <div>
-            <div className="space-x-2 text-center">
+          <div className="flex flex-col justify-start items-center">
+            <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg p-3">
               <button onClick={handleEditClick} type="button">
                 <Image src={editIcon} alt="edit icon" width={40} height={40} />
               </button>
@@ -73,23 +73,22 @@ export default function AssignmentDetails() {
               </button>
             </div>
             <div className="p-4">
-              <button onClick={handleTaskClick} className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4" type="button">New Task
+              <button onClick={handleTaskClick} className="bg-blue-600 hover:bg-blue-800 text-white rounded-lg py-3 px-6 mb-4 transition duration-200 ease-in-out coustard my-4" type="button">New Task
               </button>
             </div>
           </div>
         ) : ('')}
 
         {tasks.length > 0 ? (
-          <div className="p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 justify-center">
+          <div className="p-6 bg-gray-100 rounded-lg shadow-lg justify-center">
             {tasks.map((task) => (
               <section key={`task--${task.id}`} className="task">
                 <TaskCard taskObj={task} onUpdate={getAssignmentTasks} />
-                <br />
               </section>
             ))}
           </div>
         ) : (
-          <p className="coustard">No tasks currently on this assignment.</p>
+          <p className="coustard bg-gray-100 rounded p-3 shadow-lg">No tasks have been created yet.</p>
         )}
       </div>
     </>

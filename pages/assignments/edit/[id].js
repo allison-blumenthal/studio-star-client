@@ -46,7 +46,7 @@ export default function EditAssignment() {
         <title>Edit Assignment</title>
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
-        <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">Edit Assignment Date</h1>
+        <h1 className="text-4xl p-3 font-semibold mt-4 text-center text-gray-800 bevan bg-gray-100 rounded shadow-lg">Edit Date</h1>
         <form onSubmit={handleSubmit} className="mt-4">
           <div>
             <DatePicker
@@ -62,7 +62,7 @@ export default function EditAssignment() {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-blue-700 hover:bg-blue-900 text-white rounded-lg py-3 px-6 mt-4 transition duration-200 ease-in-out coustard"
+              className="bg-blue-600 hover:bg-blue-800 text-white rounded-lg py-3 px-6 mt-4 transition duration-200 ease-in-out coustard"
             >
               Update
             </button>

@@ -28,3 +28,7 @@ a {
 .coustard {
   font-family: 'Coustard', serif;
 }
+
+.background {
+  background-image: url('/instruments.png');
+}
