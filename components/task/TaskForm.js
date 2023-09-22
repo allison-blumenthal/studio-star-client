@@ -70,8 +70,8 @@ function TaskForm({ taskObj }) {
   };
 
   return (
-    <div className="max-w-lg mx-auto coustard">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="coustard max-w-xl w-full">
+      <form onSubmit={handleSubmit} className="bg-gray-100 shadow-lg rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
             Title:
@@ -117,9 +117,9 @@ function TaskForm({ taskObj }) {
           />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="text-center">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
             {taskObj.id ? 'Update' : 'Create'} Task

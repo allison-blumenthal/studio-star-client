@@ -60,9 +60,9 @@ export default function TaskDetails() {
       <Head>
         <title>Task Details</title>
       </Head>
-      <div className="min-h-screen p-4 flex flex-col justify-start items-center">
-        <h1 className="text-4xl pt-4 font-semibold text-center text-gray-800 bevan">Task</h1>
-        <div className="bg-gray-100 m-4 rounded px-4 shadow-lg">
+      <div className="min-h-screen flex flex-col justify-start items-center">
+        <h1 className="text-4xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded shadow-lg p-3 m-4">Task</h1>
+        <div className="bg-gray-100 mb-4 rounded px-4 shadow-lg">
           <h2 className="text-2xl p-4 text-center text-gray-800 bevan"> {task.title}</h2>
           <div className="pb-4">
             <div className="flex flex-wrap items-center">
@@ -86,7 +86,7 @@ export default function TaskDetails() {
           </div>
         </div>
         {user.is_teacher === true ? (
-          <div className="space-x-2 text-center">
+          <div className="space-x-2 text-center bg-gray-100 rounded shadow-lg p-3">
             <button onClick={handleEditClick} type="button">
               <Image src={editIcon} alt="edit icon" width={40} height={40} />
             </button>
@@ -101,7 +101,7 @@ export default function TaskDetails() {
             <Image src={stickerIcon} alt="sticker icon" width={60} height={60} />
           </button>
         )}
-        <h1 className="text-2xl p-4 font-semibold text-center text-gray-800 bevan">Current Stickers</h1>
+        <h1 className="text-2xl font-semibold text-center text-gray-800 bevan bg-gray-100 rounded -shadow-lg m-4 p-3">Current Stickers</h1>
         <div className="mb-6 flex flex-wrap justify-center items-center gap-3">
           {taskStickers.map((taskSticker) => (
             <div key={`taskSticker--${taskSticker.id}`}>

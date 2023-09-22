@@ -11,7 +11,7 @@ export default function ProfileDetails() {
         <title>Profile</title>
       </Head>
       <div className="p-4 coustard flex flex-col items-center h-screen">
-        <h1 className="bevan text-3xl  mb-2 text-center">Profile</h1>
+        <h1 className="bevan text-3xl mb-2 text-center bg-gray-100 p-3 rounded shadow-lg">Profile</h1>
         <div className="max-w-4xl text-left bg-gray-100 rounded-lg shadow-lg p-4 m-4">
           <div className="text-gray-900">
             <div className="flex items-center">

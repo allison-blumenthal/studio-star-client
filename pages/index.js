@@ -9,7 +9,7 @@ function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="min-h-screen w-full flex flex-col justify-start items-center bg-cover bg-fixed bg-no-repeat" style={{ backgroundImage: 'url(/instruments.png)' }}>
+      <div className="min-h-screen w-full flex flex-col justify-start items-center">
         <div className="p-4 md:p-6 bg-white rounded-lg shadow-lg mt-4 mx-4">
           <h1 className="text-3xl font-semibold mb-4 text-center bevan">
             Welcome, {user.first_name}!

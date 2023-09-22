@@ -24,7 +24,7 @@ const EditTask = () => {
         <title>Edit Task</title>
       </Head>
       <div className="min-h-screen flex flex-col justify-start items-center">
-        <h1 className="text-4xl p-4 font-semibold mt-4 text-center text-gray-800 bevan">Edit Task</h1>
+        <h1 className="text-4xl font-semibold mt-4 text-center text-gray-800 bevan bg-gray-100 rounded shadow-lg m-4 p-3">Edit Task</h1>
         <TaskForm taskObj={editTask} />
       </div>
     </>

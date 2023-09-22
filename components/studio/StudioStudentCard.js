@@ -29,7 +29,7 @@ function StudioStudentCard({ studioStudentObj, onUpdate }) {
     <div className="bg-gray-100 rounded-lg shadow-lg p-6 mb-6 max-w-lg">
       <div className="flex">
         {/* <button onClick={handleProfile} type="button"> */}
-        <h2 className="text-xl text-gray-900 bevan mb-2">
+        <h2 className="text-xl text-blue-800 bevan mb-2">
           {studioStudentObj.student_id.first_name} {studioStudentObj.student_id.last_name}
         </h2>
         {/* </button> */}
