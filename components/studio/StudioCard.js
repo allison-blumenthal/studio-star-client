@@ -21,8 +21,6 @@ function StudioCard({ studioObj, onUpdate }) {
     }
   };
 
-  console.warn(studioObj);
-
   return (
     <div className="bg-gray-100 rounded-lg shadow-lg p-4 mb-6 max-w-md coustard">
       <h2 className="text-xl bevan mb-4 text-center">{studioObj.name}</h2>

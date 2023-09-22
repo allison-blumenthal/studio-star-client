@@ -14,7 +14,7 @@ function Home() {
           <h1 className="text-3xl font-semibold mb-4 text-center bevan">
             Welcome, {user.first_name}!
           </h1>
-          <div className="text-xl text-gray-600 coustard text-center">
+          <div className="text-xl text-gray-900 coustard text-center">
             {user.is_teacher === true
               ? (
                 <div>
