@@ -72,3 +72,6 @@ Studio Star is all-in-one, digital platform for private lesson teachers and stud
 
 ## Contributors
 - [Allison Blumenthal](https://github.com/allison-blumenthal)
+
+## Attribution
+<a href="https://www.flaticon.com/free-icons/button" title="button icons">Button icons created by Dave Gandy - Flaticon</a>
