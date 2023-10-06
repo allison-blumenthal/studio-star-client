@@ -64,7 +64,12 @@ Studio Star is all-in-one, digital platform for private lesson teachers and stud
 ```
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
-- TBA
+<img width="300" alt="roster page" src="./src/assets/readmeScreenshots/roster-page.png>
+<img width="300" alt="studios page" src="./src/assets/readmeScreenshots/studios-page.png>
+<img width="300" alt="profile page" src="./src/assets/readmeScreenshots/profile-page.png>
+<img width="300" alt="tasks page" src="./src/assets/readmeScreenshots/tasks-page.png>
+<img width="300" alt="task details page" src="./src/assets/readmeScreenshots/task-details-page.png>
+<img width="300" alt="tasks page" src="./src/assets/readmeScreenshots/tasks-page.png>
 
 ## Video Walkthrough
 - [Studio Star Walk-through](https://www.youtube.com/watch?v=GvNtiK0aNcE&list=PLvvquqSQ_WqR6qVV6j8mgmkV1-KDQetI9&index=1)
