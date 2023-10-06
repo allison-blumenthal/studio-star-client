@@ -67,8 +67,7 @@ Studio Star is all-in-one, digital platform for private lesson teachers and stud
 - TBA
 
 ## Video Walkthrough
-- TBA
-
+- [Studio Star Walk-through](https://www.youtube.com/watch?v=GvNtiK0aNcE&list=PLvvquqSQ_WqR6qVV6j8mgmkV1-KDQetI9&index=1)
 
 ## Contributors
 - [Allison Blumenthal](https://github.com/allison-blumenthal)
